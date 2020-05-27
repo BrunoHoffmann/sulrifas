@@ -11,18 +11,47 @@
     <link rel="stylesheet" href="{{asset('assets/bootstrap/css/boostrap.min.css')}}"> 
 
     <!-- CSS -->
+    <link rel="stylesheet" href="{{asset('assets/css/geral.css')}}"> 
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> 
 </head>
 <body>
     {{-- header start --}}
-    <header>
-                                
+    <header id="cabecalho">
+        <div class="topo-cabecalho">
+            <div class="topo-cabecalho-left">
+                <div>
+                    <p>CNPJ: 36.985.896/0001-52</p>
+                </div>
+
+                <div>
+                    <p>FILANTROPIA PREMIÁVEL REGULAMENTADA NA LEI FEDERAL Nº 13.019/14 ART. 84 B, 84 C</p>
+                </div>
+            </div>
+            <div>
+                <li><a href="#"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
+            </div>
+        </div>
+
+        {{-- MENU START --}}
+        <nav id="menu">
+            <div class="menu">
+            <div>
+                <a href="">LOGO</a>
+            </div>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Sorteios</a></li>
+                <li><a href="#">Falar Conosco</a></li>
+            </ul>
+            </div>
+        </nav>
+        {{-- MENU END --}}
     </header>
     {{-- header end --}}
 
 
     {{-- conteudo start --}}
-    <div>
+    <div id="conteudo">
         @yield('content')
     </div>
     {{-- conteudo end --}}
@@ -30,8 +59,17 @@
 
     
     {{-- footer strat --}}
-    <footer class="footer">
-        
+    <footer id="footer">
+        <div class="footer">
+            <p>Copyrights © 2020 Todos os direitos reservados.</p>
+            <div class="sociais">
+                <ul>
+                    <li><a href="#"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
+                    <li><a href="#"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
+                </ul>
+                <p>email@empresa.com.br</p>
+            </div>
+        </div>
     </footer>
     <!--/ footer end  -->
 

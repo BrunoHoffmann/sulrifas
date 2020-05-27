@@ -1,3 +1,88 @@
-body {
-    /* background: #000; */
+/* cabecalho */
+#cabecalho {
+    width: 100%;
+    background: #000;
+}
+
+.topo-cabecalho {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+    color: #AAAAAA;
+    font-size: .8em;
+}
+
+.topo-cabecalho div div {
+    padding: 10px 10px;
+    cursor: pointer;
+}
+
+.topo-cabecalho div div:hover {
+    background: #333333;
+}
+
+.topo-cabecalho-left {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.topo-cabecalho a img {
+    width: 20px;
+    background: #fff;
+}
+
+#menu {
+    border-top: 1px solid rgb(65, 65, 65);
+}
+
+.menu {
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+#menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#menu ul li a {
+    color: #fff;
+    margin: 10px;
+}
+
+
+
+
+
+
+/* RODAPE */
+
+#footer {
+    width: 100%;
+    background: #000;
+    padding: 40px 0;
+}
+
+#footer .footer {
+    width: 85%;
+    margin: 0 auto;
+    color: #4b4b4b;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.sociais ul li a img {
+    width: 20px;
 }
