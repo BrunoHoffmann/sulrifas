@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- Bootstrap --}}
-    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/boostrap.min.css')}}"> 
+    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}"> 
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/geral.css')}}"> 
@@ -27,25 +27,26 @@
                     <p>FILANTROPIA PREMIÁVEL REGULAMENTADA NA LEI FEDERAL Nº 13.019/14 ART. 84 B, 84 C</p>
                 </div>
             </div>
-            <div>
-                <li><a href="#"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
+            <div class="topo-icon">
+                <li><a href="{{ asset('/') }}"><span>Instagram</span><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
             </div>
         </div>
 
         {{-- MENU START --}}
         <nav id="menu">
             <div class="menu">
-            <div>
-                <a href="">LOGO</a>
-            </div>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Sorteios</a></li>
-                <li><a href="#">Falar Conosco</a></li>
-            </ul>
+                <div>
+                    <a href="{{ asset('/') }}"><img class="logo" src="{{ URL('assets/img/logo.png') }}" alt="Logo sulrifa"></a>
+                </div>
+                <ul>
+                    <li><a href="{{ asset('/') }}">Inicio</a></li>
+                    <li><a href="{{ asset('/') }}">Sorteios</a></li>
+                    <li><a href="{{ asset('/') }}">Falar Conosco</a></li>
+                </ul>
             </div>
         </nav>
         {{-- MENU END --}}
+
     </header>
     {{-- header end --}}
 
@@ -63,8 +64,7 @@
         <div class="footer">
             <p>Copyrights © 2020 Todos os direitos reservados.</p>
             <div class="sociais">
-                <ul>
-                    <li><a href="#"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
+                <ul>                
                     <li><a href="#"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
                 </ul>
                 <p>email@empresa.com.br</p>
@@ -77,6 +77,7 @@
 
 
     <!-- JS Bootstrap -->
+    <script src="{{asset('assets/bootstrap/js/jquery.js')}}"></script>
     <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
 
     <!-- JS MANUAL -->

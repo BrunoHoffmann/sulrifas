@@ -11,11 +11,12 @@
     width: 85%;
     margin: 0 auto;
     color: #AAAAAA;
-    font-size: .8em;
+    font-size: .75em;
 }
 
 .topo-cabecalho div div {
-    padding: 10px 10px;
+    padding: 15px 10px;
+    padding-bottom: 0;
     cursor: pointer;
 }
 
@@ -28,10 +29,50 @@
     flex-wrap: wrap;
 }
 
-.topo-cabecalho a img {
-    width: 20px;
-    background: #fff;
+.topo-cabecalho .topo-icon:hover {
+    background: #3F729B;
 }
+
+.topo-cabecalho .topo-icon {
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.topo-cabecalho .topo-icon:hover a span {
+    opacity: 1;
+    top: 15px;
+}
+
+.topo-cabecalho .topo-icon a img {
+    width: 19px;
+    position: relative;
+    top: 14px;
+    transition: all .5s;
+    margin-right: 10px;
+}
+
+.topo-cabecalho .topo-icon a span {
+    color: #fff;
+    font-weight: 700;
+    position: relative;
+    top: 15px;
+    font-size: 1.2em;
+    padding-right: 20px;
+    transition: all .5s;
+    opacity: 0;
+    top: -50px;
+}
+
+.topo-cabecalho .topo-icon a {
+    padding-left: 20px;
+}
+
+.topo-cabecalho .topo-icon {
+    border-left: 1px solid rgb(65, 65, 65);
+}
+
+
+/* menu */
 
 #menu {
     border-top: 1px solid rgb(65, 65, 65);
@@ -45,21 +86,32 @@
     justify-content: space-between;
     width: 85%;
     margin: 0 auto;
-    padding: 50px;
 }
 
 #menu ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    position: relative;
+    top: 40px;
 }
 
 #menu ul li a {
-    color: #fff;
+    color: rgb(226, 226, 226);
     margin: 10px;
+    padding-left: 40px;
+}
+
+#menu ul li a {
+    text-decoration: none;
+}
+
+#menu .logo {
+    height: 120px;
 }
 
 
+/* Apresentação principal (slide) */
 
 
 
@@ -82,7 +134,24 @@
     justify-content: space-between;
 }
 
+.sociais ul {
+    margin-left: 130px;
+}
+
+.sociais ul li {
+    margin-left: 10px;
+    padding: 6px 7px;
+    border-radius: 6px;
+    transition: all .3s;
+    padding-top: 1px;
+}
+
+.sociais ul li:hover {
+    background: #3F729B;
+}
 
 .sociais ul li a img {
-    width: 20px;
+    width: 16px;
+    position: relative;
+    top: 1px;
 }
