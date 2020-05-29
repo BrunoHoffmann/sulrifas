@@ -41,8 +41,8 @@
                 <ul>
                     <li><a href="{{ asset('/') }}">Inicio</a></li>
                     <li><a href="{{ asset('sorteios') }}">Sorteios</a></li>
-                    <li><a href="{{ asset('/') }}">Instituições</a></li>
-                    <li><a href="{{ asset('/') }}">Falar Conosco</a></li>
+                    <li><a href="{{ asset('instituicoes') }}">Instituições</a></li>
+                    <li><a href="{{ asset('faleconosco') }}">Falar Conosco</a></li>
                 </ul>
             </div>
         </nav>
