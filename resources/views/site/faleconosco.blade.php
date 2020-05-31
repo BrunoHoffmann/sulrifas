@@ -4,12 +4,13 @@
 
 @section('content')
 
-<section>
-
+<section class="contato">
     <h2>Olá, olha como é fácil entrar em contato conosco...</h2>
     <p>Logo a baixo iremos disponibilizar alguns botões com links para os nossos contatos referente a cada sorteio é só clicar no botão.</p>
-    <a href="">Grupo no Whatsapp</a>
-    <a href="">Nosso Instagram</a>
+    <div class="links-contato">
+        <a href="" class="btn-whatsapp"><img src="{{ URL('assets/img/icon/whatsapp.png') }}">Grupo no Whatsapp</a>
+        <a href="" class="btn-instagram"><img src="{{ URL('assets/img/icon/instagram.png') }}" alt="">Nosso Instagram</a>
+    </div>
 </section>
 
 <section class="beneficios">

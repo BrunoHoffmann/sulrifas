@@ -20,10 +20,7 @@ a {
 a:hover {
     text-decoration: none !important; 
 }
-body {
-    /* background: #636363; */
-}
 
-.conteudo {
-    margin-bottom: -100px;
+#conteudo {
+    background: #383838;
 }

@@ -7,7 +7,7 @@
     <div class="back-principal"></div>
     <figure>
         <div class="img">
-        <img src="{{ URL('assets/img/carro1.png')}}" alt="Carro FORD">
+        <img src="{{ URL('assets/img/carro02.jpg')}}" alt="Carro FORD">
         </div>
         <figcaption>
             <div class="principal-legenda">
@@ -24,12 +24,12 @@
 
 {{-- sorteios --}}
 <section class="lista-sorteios">
-    <h2>Sorteios</h2>
-    <ul>
+    <h2 class="titulo02">Sorteios</h2>
+    <ul class="flex">
         <li>
             <figure>
                 <span class="lista-notify">Encerrado</span>
-                <img src="{{URL('assets/img/carro1.png')}}" alt="">
+                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
                 <figcaption>
                     <h3>Lander 250cc</h3>
                     <span class="description">Sorteio dia 27/05/2020</span>
@@ -50,7 +50,29 @@
         </li>
         <li>
             <figure>
-                <img src="{{URL('assets/img/moto02.jpg')}}" alt="">
+                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
+                <figcaption>
+                    <h3>Lander 250cc</h3>
+                    <span class="description">Sorteio dia 27/05/2020</span>
+                    <a class="btnn btn-verde" href="">Comprar Rifa  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
+                </figcaption>
+            </figure>
+        </li>
+        <li>
+            <figure>
+                <span class="lista-notify">Encerrado</span>
+                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
+                <figcaption>
+                    <h3>Lander 250cc</h3>
+                    <span class="description">Sorteio dia 27/05/2020</span>
+                    <a class="btnn btn-vermelho" href="">Ver Resultado  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
+                </figcaption>
+            </figure>
+        </li>
+        
+        <li>
+            <figure>
+                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
                 <figcaption>
                     <h3>Lander 250cc</h3>
                     <span class="description">Sorteio dia 27/05/2020</span>
