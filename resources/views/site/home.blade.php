@@ -1,6 +1,6 @@
 @extends('site.layout')
 
-@section('title', 'Sulrifas')
+@section('title', 'Sulrifas - Sorteios de carros e motos')
 
 @section('content')
 <main class="principal">
@@ -69,7 +69,7 @@
                 </figcaption>
             </figure>
         </li>
-        
+
         <li>
             <figure>
                 <img src="{{URL('assets/img/moto01.webp')}}" alt="">

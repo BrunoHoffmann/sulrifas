@@ -1,6 +1,6 @@
 @extends('site.layout')
 
-@section('title', 'Todos os sorteios')
+@section('title', 'Fale conosco')
 
 @section('content')
 
@@ -8,9 +8,9 @@
     <h2>Olá, olha como é fácil entrar em contato conosco...</h2>
     <p>Logo a baixo iremos disponibilizar alguns botões com links para os nossos contatos referente a cada sorteio é só clicar no botão.</p>
     <div class="links-contato">
-        <a href="" class="btn-whatsapp"><img src="{{ URL('assets/img/icon/whatsapp.png') }}">Grupo no Whatsapp</a>
-        <a href="" class="btn-instagram"><img src="{{ URL('assets/img/icon/instagram.png') }}" alt="">Nosso Instagram</a>
+        <a href="" class="btn-whatsapp"><img src="{{ URL('assets/img/icon/whatsapp.png') }}">Chat do Whatsapp</a><br>
     </div>
+    <a href="" class="btn-instagram"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram">Nosso Instagram</a>
 </section>
 
 <section class="beneficios">
@@ -49,7 +49,7 @@
             Cruze os dedos
             Você pode ser o próximo sorteado</p>
     </div>
-    
+
 </section>
 
 @endsection

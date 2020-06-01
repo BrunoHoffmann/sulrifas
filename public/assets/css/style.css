@@ -30,7 +30,7 @@
 }
 
 .topo-cabecalho .topo-icon:hover {
-    background: #3F729B;
+    background: #C43162;
 }
 
 .topo-cabecalho .topo-icon {
@@ -241,35 +241,13 @@ ul.flex li figcaption {
     margin-top: 20px;
 }
 
-.btnn {
-    color: #fff;
-    font-weight: 700;
-    font-size: 1em;
-    display: inline-block;
-    margin-top: 10px;
-    margin-bottom: 30px;
-    margin-left: 5px;
-    border-radius: 50px;
-    padding: 6px 20px;
-}
 
 .icon-correto {
     height: 14px !important;
     margin-left: 5px;
 }
 
-.btn-vermelho {
-    background: red;
-}
 
-.btn-verde {
-    background: rgb(89, 196, 67);
-    transition: all .3s;
-}
-
-.btn-verde:hover {
-    background: #272727;
-}
 
 ul.flex li figure img {
     height: 200px;
@@ -330,30 +308,94 @@ ul.filtros li:first-child {
 }
 
 .contato h2 {
-    padding: 25px;
+    padding: 35px 0;
     font-size: 1.7em;
 }
 
 .contato p {
     font-weight: 700;
-}
-
-.contato .links-contato {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 40px;
 }
 
 .contato a {
-    display: inline-block;
+    margin: 10px 0;
 }
 
+.contato a:hover {
+    color: #fff;
+}
+
+.links-contato {
+    border-bottom: 1px solid #acacac;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 85%;
+}
+
+
 /* Botões */
+
+
+.btnn {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1em;
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+    border-radius: 50px;
+    padding: 6px 20px;
+}
+
+.btn-vermelho {
+    background: red;
+}
+
+.btn-verde {
+    background: rgb(89, 196, 67);
+    transition: all .3s;
+}
+
+.btn-verde:hover {
+    background: #272727;
+}
 
 .btn-whatsapp {
     background: #59BA41;
     color: #fff;
     padding: 10px 20px;
-    /* display: block; */
+    display: inline-block;
+    border-radius: 6px;
+    transition: all .3s;
+}
+
+.btn-whatsapp:hover {
+    background: rgb(75, 175, 49);
+}
+
+.btn-whatsapp img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.btn-instagram {
+    background: #C43162;
+    color: #fff;
+    padding: 10px 27px;
+    display: inline-block;
+    border-radius: 6px;
+    transition: all .3s;
+}
+
+.btn-instagram:hover {
+    background: rgb(187, 37, 87);
+}
+
+.btn-instagram img {
+    height: 20px;
+    margin-right: 10px;
 }
 
 /* RODAPE */
@@ -389,7 +431,7 @@ ul.filtros li:first-child {
 }
 
 .sociais ul li:hover {
-    background: #3F729B;
+    background: #C43162;
 }
 
 .sociais ul li a img {
