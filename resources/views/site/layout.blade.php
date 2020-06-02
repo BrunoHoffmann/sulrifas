@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- Bootstrap --}}
-    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}"> 
+    <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/geral.css')}}"> 
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> 
+    <link rel="stylesheet" href="{{asset('assets/css/geral.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 </head>
 <body>
     {{-- header start --}}
@@ -33,8 +33,8 @@
         </div>
 
         {{-- MENU START --}}
-        <nav id="menu">
-            <div class="menu">
+        <nav id="menu" class="menu">
+            <div class="menu-grid">
                 <div>
                     <a href="{{ asset('/') }}"><img class="logo" src="{{ URL('assets/img/logo.png') }}" alt="Logo sulrifa"></a>
                 </div>
@@ -46,6 +46,7 @@
                 </ul>
             </div>
         </nav>
+
         {{-- MENU END --}}
 
     </header>
@@ -59,13 +60,13 @@
     {{-- conteudo end --}}
 
 
-    
+
     {{-- footer strat --}}
     <footer id="footer">
         <div class="footer">
             <p>Copyrights © 2020 Todos os direitos reservados.</p>
             <div class="sociais">
-                <ul>                
+                <ul>
                     <li><a href="#"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
                 </ul>
                 <p>email@empresa.com.br</p>

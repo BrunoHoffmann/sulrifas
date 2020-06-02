@@ -13,11 +13,12 @@
     <a href="" class="btn-instagram"><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram">Nosso Instagram</a>
 </section>
 
+{{-- beneficios --}}
 <section class="grid-beneficios">
     <div class="beneficios flex">
     <div class="options">
         <div>
-            <h3><img src="{{URL('assets/img/icon/search.png')}}" alt="Busca sorteios"> ESCOLHA O SORTEIO</h3>
+            <h3><img src="{{ URL('assets/img/icon/search.png') }}" alt="Busca sorteios"> ESCOLHA O SORTEIO</h3>
         </div>
         <p>Escolha o prêmio que gostaria de concorrer, verifique a descrição, regulamento do sorteio e fotos em caso de dúvidas entre em contato com o administrador</p>
     </div>
