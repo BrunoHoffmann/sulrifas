@@ -13,5 +13,3 @@ Route::prefix('dashboard')->group(function() {
     Route::get('/sair', 'Admin\HomeController@logout')->name('logout');
 });
 
-
-Auth::routes();
