@@ -106,12 +106,9 @@
     margin: 10px;
     padding-left: 40px;
     transition: all .3s;
+    text-decoration: none;
 }
 
-.menu ul li a {
-    text-decoration: none;
-    transition: all .3s;
-}
 
 .menu .logo {
     height: 100px;
@@ -123,6 +120,7 @@
 .menu-movel {
     position: fixed;
     margin-bottom: 60px;
+    top: 0;
     height: 60px;
     width: 100%;
     z-index: 9999999;
@@ -168,6 +166,9 @@
     transition: all .3s;
 }
 
+.menu .logo_icon img.icon-menu {
+    display: none;
+}
 
 /* Apresentação principal (slide) */
 

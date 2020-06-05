@@ -13,6 +13,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/geral.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
 </head>
 <body>
     {{-- header start --}}
@@ -33,10 +34,12 @@
         </div>
 
         {{-- MENU START --}}
-        <nav id="menu" class="menu">
+        <nav id="menu" class="menu-mobile">
             <div class="menu-grid">
-                <div>
-                    <a href="{{ asset('/') }}"><img class="logo" src="{{ URL('assets/img/logo.png') }}" alt="Logo sulrifa"></a>
+                <div class="logo_icon">
+                    <img class="icon-menu" src="{{URL('assets/img/icon/icon-menu.png')}}" alt="Icon menu">
+
+                    <img class="logo" src="{{ URL('assets/img/logo.png') }}" alt="Logo sulrifa">
                 </div>
                 <ul>
                     <li><a href="{{ asset('/') }}">Inicio</a></li>
@@ -83,6 +86,6 @@
     <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
 
     <!-- JS MANUAL -->
-    <script src="{{asset('assets/js/script.js')}}"></script>
+    <script src="{{asset('assets/js/app.js')}}"></script>
 </body>
 </html>
