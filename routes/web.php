@@ -10,7 +10,9 @@ Route::get("/faleconosco", "FaleConoscoController@index")->name('faleconosco');
 
 Route::prefix('dashboard')->group(function() {
     Route::get("/", "Admin\AuthController@showLoginForm")->name('admin.login');
-    Route::post('/authenticate', "Admin\AuthController@authenticate")->name('admin.authenticate');
+    Route::post("login", "Admin\AuthController@login")->name('login.do');
+
+
     Route::get('/home', 'Admin\AuthController@home')->name('admin.home');
     Route::get('/sair', 'Admin\HomeController@logout')->name('admin.logout');
 });
