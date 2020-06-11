@@ -1,3 +1,6 @@
+@extends('admin.master.master')
+
+@section('content')
 <section class="dash_content_app">
 
     <header class="dash_content_app_header">
@@ -8,16 +11,13 @@
                 <ul>
                     <li><a href="">Dashboard</a></li>
                     <li class="separator icon-angle-right icon-notext"></li>
-                    <li><a href="" class="text-orange">Clientes</a></li>
+                    <li><a href="" class="text-orange">Usuários</a></li>
                 </ul>
             </nav>
 
-            <a href="dashboard.php?app=users/create" class="btn btn-orange icon-user ml-1">Criar Cliente</a>
-            <button class="btn btn-green icon-search icon-notext ml-1 search_open"></button>
+            <a href="{{ route('users.create') }}" class="btn btn-orange icon-user ml-1">Criar usuário</a>
         </div>
     </header>
-
-    <?php include('filter.php'); ?>
 
     <div class="dash_content_app_box">
         <div class="dash_content_app_box_stage">
@@ -25,22 +25,27 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nome Completo</th>
-                    <th>CPF</th>
+                    <th>Nome</th>
                     <th>E-mail</th>
-                    <th>Nascimento</th>
+                    <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($users as $user)
                 <tr>
-                    <td>1</td>
-                    <td><a href="" class="text-orange">Gustavo Web</a></td>
-                    <td>123.456.789-00</td>
-                    <td><a href="" class="text-orange">gustavo@upinside.com.br</a></td>
-                    <td>28/10/1992</td>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>
+                        <a href="" class="btn btn-blue">Editar</a>
+                        <a href="" class="btn btn-red">Deletar</a>
+                    </td>
                 </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
     </div>
 </section>
+
+@endsection

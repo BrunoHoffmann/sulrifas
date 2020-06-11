@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="{{url(mix('backend/assets/css/style.css'))}}"/>
     <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
 
+    @hasSection('css')
+        @yield('css')
+    @endif
 
-    <title>UpAdmin - Site Control</title>
+    <title>SulRifas - Sistema de administração</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -37,16 +40,11 @@
         </article>
 
         <ul class="dash_sidebar_nav">
-            <li class="dash_sidebar_nav_item active">
-                <a class="icon-tachometer" href="dashboard.php?app=dashboard/index">Dashboard</a>
+            <li class="dash_sidebar_nav_item {{isActive('admin.home')}}">
+                <a class="icon-tachometer" href="{{route('admin.home')}}">Dashboard</a>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-users" href="dashboard.php?app=users/index">Clientes</a>
-                <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=users/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=companies/index">Empresas</a></li>
-                    <li class=""><a href="dashboard.php?app=users/team">Time</a></li>
-                    <li class=""><a href="dashboard.php?app=users/create">Criar Novo</a></li>
-                </ul>
+            <li class="dash_sidebar_nav_item {{isActive('users')}}">
+                <a class="icon-users" href="{{route('users.index')}}">Usuários</a>
             </li>
             <li class="dash_sidebar_nav_item"><a class="icon-home" href="dashboard.php?app=properties/index">Imóveis</a>
                 <ul class="dash_sidebar_nav_submenu">
@@ -61,7 +59,7 @@
                 </ul>
             </li>
             <li class="dash_sidebar_nav_item"><a class="icon-reply" href="">Ver Site</a></li>
-            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="" target="_blank">Sair</a></li>
+            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="{{route('admin.logout')}}" target="_blank">Sair</a></li>
         </ul>
 
     </aside>
@@ -76,7 +74,7 @@
                         <i class="icon-imob text-orange"></i><a href="">Up<b>Admin</b></a>
                     </h1>
                     <div class="dash_userbar_box_bar no_mobile">
-                        <a class="text-red icon-sign-out" href="">Sair</a>
+                        <a class="text-red icon-sign-out" href="{{route('admin.logout')}}">Sair</a>
                     </div>
                 </div>
             </div>
@@ -92,6 +90,10 @@
 <script src="{{ url(mix('backend/assets/js/jquery.js'))}}"></script>
 <script src="{{ url(mix('backend/assets/js/libs.js'))}}"></script>
 <script src="{{ url(mix('backend/assets/js/scripts.js'))}}"></script>
+
+@hasSection('js')
+    @yield('js')
+@endif
 
 </body>
 </html>
