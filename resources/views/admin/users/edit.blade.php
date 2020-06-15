@@ -1,11 +1,10 @@
 @extends('admin.master.master')
 
-
 @section('content')
 <section class="dash_content_app">
 
     <header class="dash_content_app_header">
-        <h2 class="icon-user-plus">Novo Usuário</h2>
+        <h2 class="icon-user-plus">Editar Usuário</h2>
 
         <div class="dash_content_app_header_actions">
             <nav class="dash_content_app_breadcrumb">
@@ -14,7 +13,7 @@
                     <li class="separator icon-angle-right icon-notext"></li>
                     <li><a href="">Usuários</a></li>
                     <li class="separator icon-angle-right icon-notext"></li>
-                    <li><a href="" class="text-orange">Novo Usuário</a></li>
+                    <li><a href="" class="text-orange">Editar Usuário</a></li>
                 </ul>
             </nav>
         </div>
@@ -40,24 +39,25 @@
                 </li>
             </ul>
 
-            <form class="app_form" action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
+            <form class="app_form" action="{{route('users.update', $user->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="nav_tabs_content">
                     <div id="data">
 
                         <label class="label">
                             <span class="legend">*Nome:</span>
-                            <input type="text" name="name" placeholder="Nome Completo" value=""/>
+                            <input type="text" name="name" placeholder="Nome Completo" value="{{$user->name}}"/>
                         </label>
 
                         <label class="label">
                             <span class="legend">*E-mail:</span>
-                            <input type="email" name="email" placeholder="Digite seu e-mail" value=""/>
+                            <input type="email" name="email" placeholder="Digite seu e-mail" value="{{$user->email}}"/>
                         </label>
 
                         <div class="label_g2">
                             <label class="label">
-                                <span class="legend">*Senha:</span>
+                                <span class="legend">*Nova Senha:</span>
                                 <input type="password" name="password" placeholder="Digite sua senha" value=""/>
                             </label>
                             <label class="label">
@@ -66,12 +66,11 @@
                             </label>
                         </div>
 
-                    <div class="text-right mt-2">
-                        <a href="{{route('users.index')}}" class="btn btn-large btn-red">Cancelar
-                        </a>
-                        <button class="btn btn-large btn-green icon-check-square-o" type="submit">Criar usuário
-                        </button>
-                    </div>
+                <div class="text-right mt-2">
+                    <a href="{{route('users.index')}}" class="btn btn-large btn-red">Cancelar
+                    </a>
+                    <button class="btn btn-large btn-green icon-check-square-o" type="submit">Editar usuário
+                    </button>
                 </div>
             </form>
         </div>

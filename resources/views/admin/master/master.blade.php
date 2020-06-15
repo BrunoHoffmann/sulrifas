@@ -46,19 +46,16 @@
             <li class="dash_sidebar_nav_item {{isActive('users')}}">
                 <a class="icon-users" href="{{route('users.index')}}">Usuários</a>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-home" href="dashboard.php?app=properties/index">Imóveis</a>
-                <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=properties/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=properties/create">Criar Novo</a></li>
-                </ul>
+            <li class="dash_sidebar_nav_item {{isActive('sorteios')}}">
+                <a class="icon-users" href="{{route('sorteios.index')}}">Sorteios</a>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-file-text" href="dashboard.php?app=contracts/index">Contratos</a>
-                <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=contracts/create">Criar Novo</a></li>
-                </ul>
+            <li class="dash_sidebar_nav_item {{isActive('reserva.dados')}}">
+                <a class="icon-users" href="{{route('sorteios.index')}}">Dados Reserva</a>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="">Ver Site</a></li>
+            <li class="dash_sidebar_nav_item {{isActive('banks.dados')}}">
+                <a class="icon-users" href="{{route('banks.index')}}">Banco</a>
+            </li>
+            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="{{Route('home')}}">Ver Site</a></li>
             <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="{{route('admin.logout')}}" target="_blank">Sair</a></li>
         </ul>
 

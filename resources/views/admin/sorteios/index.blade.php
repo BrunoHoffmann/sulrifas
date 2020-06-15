@@ -11,11 +11,11 @@
                 <ul>
                     <li><a href="">Dashboard</a></li>
                     <li class="separator icon-angle-right icon-notext"></li>
-                    <li><a href="" class="text-orange">Usuários</a></li>
+                    <li><a href="" class="text-orange">Sorteios</a></li>
                 </ul>
             </nav>
 
-            <a href="{{ route('users.create') }}" class="btn btn-orange icon-user ml-1">Criar usuário</a>
+            <a href="{{ route('sorteios.create') }}" class="btn btn-orange icon-user ml-1">Criar Sorteio</a>
         </div>
     </header>
 
@@ -26,22 +26,25 @@
                 <tr>
                     <th>#</th>
                     <th>Nome</th>
-                    <th>E-mail</th>
+                    <th>Ativo</th>
+                    <th>Valor</th>
+                    <th>Data Sorteio</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($users as $user)
                 <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>1</td>
+                    <td>Jetta TSI 2018</td>
+                    <td>Sim</td>
+                    <td>120,00</td>
+                    <td>13/06/2020</td>
                     <td>
-                        <a href="{{Route('users.edit', $user->id)}}" class="btn btn-blue">Editar</a>
-                        <a href="{{Route('users.destroy', $user->id)}}" class="btn btn-red">Deletar</a>
+                        <a href="{{Route('sorteios.edit', 1)}}" class="btn btn-blue">Editar</a>
+                        <a href="{{Route('sorteios.destroy', 1)}}" class="btn btn-red">Deletar</a>
                     </td>
                 </tr>
-                @endforeach
+
                 </tbody>
             </table>
         </div>

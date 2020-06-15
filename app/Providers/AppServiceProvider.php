@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::component('admin.components.message', 'message');
+        // Blade::component('admin.components.message', 'message');
     }
 }

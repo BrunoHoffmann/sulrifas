@@ -20,7 +20,35 @@ Route::prefix('dashboard')->group(function() {
         Route::get('/home', 'Admin\AuthController@home')->name('admin.home');
 
         // Usuários
-        Route::resource('users', 'Admin\UserController');
+        Route::prefix('usuarios')->group(function() {
+            Route::get('/', 'Admin\UserController@index')->name('users.index');
+            Route::get('/create', 'Admin\UserController@create')->name('users.create');
+            Route::post('/store', 'Admin\UserController@store')->name('users.store');
+            Route::get('/edit/{id}', 'Admin\UserController@edit')->name('users.edit');
+            Route::put('/update/{id}', 'Admin\UserController@update')->name('users.update');
+            Route::get('/destroy/{id}', 'Admin\UserController@destroy')->name('users.destroy');
+        });
+
+        // Sorteios
+        Route::prefix('sorteios')->group(function() {
+            Route::get('/', 'Admin\SorteiosController@index')->name('sorteios.index');
+            Route::get('/create', 'Admin\SorteiosController@create')->name('sorteios.create');
+            Route::post('/store', 'Admin\SorteiosController@store')->name('sorteios.store');
+            Route::get('/edit/{id}', 'Admin\SorteiosController@edit')->name('sorteios.edit');
+            Route::put('/update/{id}', 'Admin\SorteiosController@update')->name('sorteios.update');
+            Route::get('/destroy/{id}', 'Admin\SorteiosController@destroy')->name('sorteios.destroy');
+        });
+
+        // Banco
+        Route::prefix('bancos')->group(function() {
+            Route::get('/', 'Admin\BancoController@index')->name('banks.index');
+            Route::get('/create', 'Admin\BancoController@create')->name('banks.create');
+            Route::post('/store', 'Admin\BancoController@store')->name('banks.store');
+            Route::get('/edit/{id}', 'Admin\BancoController@edit')->name('banks.edit');
+            Route::put('/update/{id}', 'Admin\BancoController@update')->name('banks.update');
+            Route::get('/destroy/{id}', 'Admin\BancoController@destroy')->name('banks.destroy');
+        });
+
     });
 
 

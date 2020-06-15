@@ -11,11 +11,11 @@
                 <ul>
                     <li><a href="">Dashboard</a></li>
                     <li class="separator icon-angle-right icon-notext"></li>
-                    <li><a href="" class="text-orange">Usuários</a></li>
+                    <li><a href="" class="text-orange">Bancos</a></li>
                 </ul>
             </nav>
 
-            <a href="{{ route('users.create') }}" class="btn btn-orange icon-user ml-1">Criar usuário</a>
+            <a href="{{ route('users.create') }}" class="btn btn-orange icon-user ml-1">Criar banco</a>
         </div>
     </header>
 
@@ -27,18 +27,19 @@
                     <th>#</th>
                     <th>Nome</th>
                     <th>E-mail</th>
-                    <th>Ações</th>
+                    <th>Telefone</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($users as $user)
+                @foreach($leads as $lead)
                 <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>{{$lead->id}}</td>
+                    <td>{{$lead->name}}</td>
+                    <td>{{$lead->email}}</td>
+                    <td>{{$lead->phone}}</td>
                     <td>
-                        <a href="{{Route('users.edit', $user->id)}}" class="btn btn-blue">Editar</a>
-                        <a href="{{Route('users.destroy', $user->id)}}" class="btn btn-red">Deletar</a>
+                        <a href="{{Route('users.edit', $lead->id)}}" class="btn btn-blue">Editar</a>
+                        <a href="{{Route('users.destroy', $lead->id)}}" class="btn btn-red">Deletar</a>
                     </td>
                 </tr>
                 @endforeach
