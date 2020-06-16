@@ -13,7 +13,7 @@
             <div class="principal-legenda">
                 <h1>Ford ka se 1.0 ha b</h1>
                 <span>2018</span>
-                <a href="{{ asset('/') }}" class="btn-compra">Comprar rifa</a>
+                <a href="{{Route('sorteios.show', 1)}}" class="btn-compra">Comprar rifa</a>
             </div>
             <div class="footer-principal">
                 <p>* Comprando uma centena por R$ 50,00 - Você concorre a um automóvel</p>

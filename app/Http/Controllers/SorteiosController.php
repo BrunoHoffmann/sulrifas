@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -10,6 +10,11 @@ class SorteiosController extends Controller
 {
     public function index()
     {
-        return view("site.sorteios");
+        return view("site.sorteios.sorteios");
+    }
+
+    public function show($id)
+    {
+        return view('site.sorteios.show');
     }
 }

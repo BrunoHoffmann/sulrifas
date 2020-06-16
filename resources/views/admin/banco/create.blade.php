@@ -56,7 +56,7 @@
                             </label>
 
                             <label class="label">
-                                <span class="legend">*Ativar:</span>
+                                <span class="legend">*Ativar Titular:</span>
                                 <select name="holder_active" id="holder_active">
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>
@@ -66,13 +66,62 @@
 
                         <div class="label_g2">
                             <label class="label">
-                                <span class="legend">*Títular</span>
-                                <input type="text" name="holder" placeholder="Digite o nome do títular" value=""/>
+                                <span class="legend">*CPF</span>
+                                <input type="text" name="cpf" placeholder="Digite o cpf" value=""/>
                             </label>
 
                             <label class="label">
-                                <span class="legend">*Ativar:</span>
-                                <select name="ativo" id="ativo">
+                                <span class="legend">*Ativar CPF:</span>
+                                <select name="cpf_active" id="cpf_active">
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="label_g2">
+                            <label class="label">
+                                <span class="legend">*Agência</span>
+                                <input type="text" name="agency" placeholder="Digite a agência" value=""/>
+                            </label>
+
+                            <label class="label">
+                                <span class="legend">*Ativar Agência:</span>
+                                <select name="agency_active" id="agency_active">
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="label_g2">
+                            <label class="label">
+                                <span class="legend">*Conta</span>
+                                <input type="text" name="account" placeholder="Digite a conta" value=""/>
+                            </label>
+
+                            <label class="label">
+                                <span class="legend">*Ativar Conta:</span>
+                                <select name="account_active" id="account_active">
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="label_g2">
+                            <label class="label">
+                                <span class="legend">*Tipo de Conta</span>
+                                <select name="type" id="type">
+                                    @foreach($type as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
+                            </label>
+
+                            <label class="label">
+                                <span class="legend">*Ativar Tipo de conta:</span>
+                                <select name="type_active" id="type_active">
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>
                                 </select>
@@ -80,25 +129,8 @@
                         </div>
 
                         <label class="label">
-                            <span class="legend">*Valor do número:</span>
-                            <input type="text" name="valor" placeholder="R$ 00,00" value=""/>
-                        </label>
-
-                        <div class="label_g2">
-                            <label class="label">
-                                <span class="legend">*Foto de capa:</span>
-                                <input type="file" name="file_capa">
-                            </label>
-
-                            <label class="label">
-                                <span class="legend">*Fotos do veículo</span>
-                                <input type="file" name="file_photos">
-                            </label>
-                        </div>
-
-                        <label class="label">
-                            <span class="legend">*Ativar:</span>
-                            <select name="ativo" id="ativo">
+                            <span class="legend">*Ativar Banco:</span>
+                            <select name="active" id="active">
                                 <option value="1">Sim</option>
                                 <option value="0">Não</option>
                             </select>
@@ -106,9 +138,9 @@
 
 
                     <div class="text-right mt-2">
-                        <a href="{{route('sorteios.index')}}" class="btn btn-large btn-red">Cancelar
+                        <a href="{{route('banks.index')}}" class="btn btn-large btn-red">Cancelar
                         </a>
-                        <button class="btn btn-large btn-green icon-check-square-o" type="submit">Criar Sorteio</button>
+                        <button class="btn btn-large btn-green icon-check-square-o" type="submit">Criar Banco</button>
                     </div>
                 </div>
             </form>

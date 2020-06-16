@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function showLoginForm()
     {
         if(Auth::check() === true) {
@@ -18,6 +23,11 @@ class AuthController extends Controller
         return view('admin.index');
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function home()
     {
         return view('admin.dashboard');

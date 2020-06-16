@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
-// site
+// SITE
 Route::get('/', 'HomeController@index')->name('home');
 Route::get("/sorteios", "SorteiosController@index")->name('sorteios');
+Route::get('/sorteios/{id}', 'SorteiosController@show')->name('sorteios.show');
 Route::get("/instituicoes", "InstituicoesController@index")->name("instituicoes");
 Route::get("/faleconosco", "FaleConoscoController@index")->name('faleconosco');
 

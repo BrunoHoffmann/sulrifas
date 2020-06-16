@@ -9,12 +9,22 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
 
         return view("admin.home");
     }
 
+    /**
+     * logout login system.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function logout()
     {
         Auth::logout();

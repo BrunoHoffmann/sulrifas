@@ -16,15 +16,15 @@ class CreateBankTable extends Migration
         Schema::create('bank', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('holder')->nullable();
-            $table->string('holder_active')->nullable();
+            $table->string('holder');
+            $table->string('holder_active');
             $table->string('cpf');
-            $table->string('cpf_active')->nullable();
+            $table->string('cpf_active');
             $table->string('agency')->nullable();
             $table->string('agency_active')->nullable();
             $table->string('account')->nullable();
             $table->string('account_active')->nullable();
-            $table->string('type')->nullable();
+            $table->string('type_id')->nullable();
             $table->string('type_active')->nullable();
             $table->string('active');
             $table->timestamps();
