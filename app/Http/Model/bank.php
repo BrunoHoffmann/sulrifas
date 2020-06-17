@@ -23,7 +23,10 @@ class bank extends Model
         'agency_active',
         'account',
         'account_ative',
-        'type',
-        'type_active'
+        'operation',
+        'operation_ative',
+        'type_id',
+        'type_active',
+        'active'
     ];
 }

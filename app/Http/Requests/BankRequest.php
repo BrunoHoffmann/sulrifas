@@ -33,7 +33,7 @@ class BankRequest extends FormRequest
             'agency_active' => 'max:2',
             'account' => 'max:20',
             'account_active' => 'max:2',
-            'type' => 'max:2',
+            'type' => 'max:30',
             'type_active' => 'max:2',
             'active' => 'required|max:2'
         ];
@@ -60,7 +60,7 @@ class BankRequest extends FormRequest
            'agency_active.max' => 'O tamanho do campo ativar agência inserido no campo não pode utltrapassar 2 caracteres',
            'account.max' => 'O tamanho do campo Conta inserido no campo não pode utltrapassar 20 caracteres',
            'account_active.max' => 'O tamanho do campo ativar conta inserido não pode utltrapassar 2 caracteres',
-           'type.max' => 'O tamanho do campo Tipo inserido não pode utltrapassar 2 caracteres',
+           'type.max' => 'O tamanho do campo Tipo inserido não pode utltrapassar 30 caracteres',
            'type_active.max' => 'O tamanho do campo Ativar Tipo inserido não pode utltrapassar 2 caracteres',
            'active.max' => 'O tamanho do campo Ativar Conta inserido não pode utltrapassar 2 caracteres'
         ];

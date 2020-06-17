@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('site.master.master')
 
 @section('title', 'Todos os sorteios')
 
@@ -86,7 +86,7 @@
                 </figcaption>
             </figure>
         </li>
-        
+
         <li>
             <figure>
                 <img src="{{URL('assets/img/moto01.webp')}}" alt="">

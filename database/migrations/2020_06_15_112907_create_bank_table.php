@@ -24,6 +24,8 @@ class CreateBankTable extends Migration
             $table->string('agency_active')->nullable();
             $table->string('account')->nullable();
             $table->string('account_active')->nullable();
+            $table->string('operation')->nullable();
+            $table->string('operation_active')->nullable();
             $table->string('type_id')->nullable();
             $table->string('type_active')->nullable();
             $table->string('active');

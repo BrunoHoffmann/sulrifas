@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('site.master.master')
 
 @section('title', 'Instituições')
 

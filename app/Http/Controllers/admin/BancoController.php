@@ -46,12 +46,43 @@ class BancoController extends Controller
      */
     public function store(bankRequest $request)
     {
+        $type = Type_bank::where('name', $request->type)->get();
 
+        if(empty($type[0]->id)) {
+            $type = Type_bank::create([
+                'name' => $request->type
+            ]);
+        }
+
+        $bank = Bank::create([
+            'name' => $request->name,
+            'holder' => $request->holder,
+            'holder_active' => $request->holder_active,
+            'cpf' => $request->cpf,
+            'cpf_active' => $request->cpf_active,
+            'agency' => $request->agency,
+            'agency_active' => $request->agency_active,
+            'account' => $request->account,
+            'account_active' => $request->account_active,
+            'operation' => $request->operation,
+            'operation_active' => $request->operation_active,
+            'type_id' => $type[0]->id,
+            'type_active' => $request->type_active,
+            'active' => $request->active
+        ]);
+
+        return redirect()->route('banks.index');
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $banks = Bank::find($id);
+        $type = Type_bank::where('id', $banks->type_id)->get();
 
+        return view('admin.banco.edit', [
+            'banks' => $banks,
+            'type' => $type
+        ]);
     }
 
     public function update()

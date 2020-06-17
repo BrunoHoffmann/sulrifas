@@ -40,19 +40,19 @@
                 </li>
             </ul>
 
-            <form class="app_form" action="{{route('banks.store')}}" method="post" enctype="multipart/form-data">
+            <form class="app_form" action="{{route('banks.store')}}" method="post" enctype="multipart/form-data" autocomplete="off">
                 @csrf
                 <div class="nav_tabs_content">
                     <div id="data">
                         <label class="label">
                             <span class="legend">*Nome do Banco:</span>
-                            <input type="text" name="name" placeholder="Nome do banco" value=""/>
+                            <input type="text" name="name" placeholder="ex: NuConta" value="{{old('name')}}"/>
                         </label>
 
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*Titular</span>
-                                <input type="text" name="holder" placeholder="Digite o nome do titular" value=""/>
+                                <input type="text" name="holder" placeholder="ex: Jose Pedro" value="{{old('holder')}}"/>
                             </label>
 
                             <label class="label">
@@ -67,7 +67,7 @@
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*CPF</span>
-                                <input type="text" name="cpf" placeholder="Digite o cpf" value=""/>
+                                <input type="text" name="cpf" placeholder="ex: xxx.xxx.xxx-xx" value="{{old('cpf')}}"/>
                             </label>
 
                             <label class="label">
@@ -81,12 +81,12 @@
 
                         <div class="label_g2">
                             <label class="label">
-                                <span class="legend">*Agência</span>
-                                <input type="text" name="agency" placeholder="Digite a agência" value=""/>
+                                <span class="legend">Agência</span>
+                                <input type="text" name="agency" placeholder="ex: xxxx" value="{{old('agency')}}"/>
                             </label>
 
                             <label class="label">
-                                <span class="legend">*Ativar Agência:</span>
+                                <span class="legend">Ativar Agência:</span>
                                 <select name="agency_active" id="agency_active">
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>
@@ -96,12 +96,12 @@
 
                         <div class="label_g2">
                             <label class="label">
-                                <span class="legend">*Conta</span>
-                                <input type="text" name="account" placeholder="Digite a conta" value=""/>
+                                <span class="legend">Conta</span>
+                                <input type="text" name="account" placeholder="ex: xxxxxxxx" value="{{old('account')}}"/>
                             </label>
 
                             <label class="label">
-                                <span class="legend">*Ativar Conta:</span>
+                                <span class="legend">Ativar Conta:</span>
                                 <select name="account_active" id="account_active">
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>
@@ -111,16 +111,32 @@
 
                         <div class="label_g2">
                             <label class="label">
-                                <span class="legend">*Tipo de Conta</span>
-                                <select name="type" id="type">
-                                    @foreach($type as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                    @endforeach
-                                </select>
+                                <span class="legend">Operation</span>
+                                <input type="text" name="operation" placeholder="ex: xxx" value="{{old('operation')}}"/>
                             </label>
 
                             <label class="label">
-                                <span class="legend">*Ativar Tipo de conta:</span>
+                                <span class="legend">Ativar Agência:</span>
+                                <select name="operation_active" id="operation_active">
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="label_g2">
+                            <label class="label">
+                                <span class="legend">Tipo de Conta</span>
+                                <input type="text" name="type" list="type" placeholder="ex: Poupança" value="{{old('type')}}">
+                                <datalist id="type">
+                                    @foreach($type as $item)
+                                        <option value="{{$item->name}}">{{$item->name}}</option>
+                                    @endforeach
+                                </datalist>
+                            </label>
+
+                            <label class="label">
+                                <span class="legend">Ativar Tipo de conta:</span>
                                 <select name="type_active" id="type_active">
                                     <option value="1">Sim</option>
                                     <option value="0">Não</option>

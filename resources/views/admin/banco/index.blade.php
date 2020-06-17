@@ -27,8 +27,8 @@
                     <th>#</th>
                     <th>Nome</th>
                     <th>Titular</th>
-                    <th>Agência</th>
-                    <th>Conta</th>
+                    <th>CPF</th>
+                    <th>Ativo</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -38,11 +38,11 @@
                     <td>{{$bank->id}}</td>
                     <td>{{$bank->name}}</td>
                     <td>{{$bank->holder}}</td>
-                    <td>{{$bank->agency}}</td>
-                    <td>{{$bank->account}}</td>
+                    <td>{{$bank->cpf}}</td>
+                    <td>{{ ($bank->active == '1') ? 'Sim' : 'Não'  }}</td>
                     <td>
-                        <a href="{{Route('banco.edit', $bank->id)}}" class="btn btn-blue">Editar</a>
-                        <a href="{{Route('banco.destroy', $bank->id)}}" class="btn btn-red">Deletar</a>
+                        <a href="{{Route('banks.edit', $bank->id)}}" class="btn btn-blue">Editar</a>
+                        <a href="{{Route('banks.destroy', $bank->id)}}" class="btn btn-red">Deletar</a>
                     </td>
                 </tr>
                 @endforeach

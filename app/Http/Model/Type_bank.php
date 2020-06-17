@@ -16,4 +16,6 @@ class Type_bank extends Model
     protected $fillable = [
         'name'
     ];
+
+    public $timestamps = false;
 }
