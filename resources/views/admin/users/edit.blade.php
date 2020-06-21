@@ -39,7 +39,7 @@
                 </li>
             </ul>
 
-            <form class="app_form" action="{{route('users.update', $user->id)}}" method="post" enctype="multipart/form-data">
+            <form class="app_form" action="{{route('users.update', $user->id)}}" method="post" enctype="multipart/form-data" autocomplete="off">
                 @csrf
                 @method('PUT')
                 <div class="nav_tabs_content">

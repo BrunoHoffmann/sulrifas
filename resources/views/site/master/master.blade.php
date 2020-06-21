@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="{{asset('assets/css/geral.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+
+    {{-- Favicon --}}
+    <link rel="shortcut icon" href="{{asset('assets/img/favicon.png')}}">
 </head>
 <body>
     {{-- header start --}}

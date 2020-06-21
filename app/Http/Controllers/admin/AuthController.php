@@ -54,6 +54,8 @@ class AuthController extends Controller
             $json['message'] = $this->message->error('Ooops, usuário e senha incorretos')->render();
             return response()->json($json);
         }
+        $nameUser = User::firstWhere('email', $request->email);
+        session(['user' => $nameUser['name']]);
 
         $json['redirect'] = route('admin.home');
         return response()->json($json);

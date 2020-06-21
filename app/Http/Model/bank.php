@@ -22,9 +22,9 @@ class bank extends Model
         'agency',
         'agency_active',
         'account',
-        'account_ative',
+        'account_active',
         'operation',
-        'operation_ative',
+        'operation_active',
         'type_id',
         'type_active',
         'active'

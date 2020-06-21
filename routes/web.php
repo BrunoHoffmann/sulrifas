@@ -4,11 +4,21 @@ use Illuminate\Support\Facades\Route;
 
 // SITE
 Route::get('/', 'HomeController@index')->name('home');
-Route::get("/sorteios", "SorteiosController@index")->name('sorteios');
-Route::get('/sorteios/{id}', 'SorteiosController@show')->name('sorteios.show');
+
+// Sorteios
+Route::prefix('sorteios')->group(function() {
+    Route::get("/", "SorteiosController@index")->name('sorteios');
+    Route::get('/{slug}', 'SorteiosController@show')->name('sorteios.show');
+    Route::post('/reservar/{slug}', 'SorteiosController@reservar')->name('sorteios.reservar');
+});
+
+// instituições
 Route::get("/instituicoes", "InstituicoesController@index")->name("instituicoes");
+
+// Fale Conosco
 Route::get("/faleconosco", "FaleConoscoController@index")->name('faleconosco');
 
+// ADMIN
 Route::prefix('dashboard')->group(function() {
     // formulario de login
     Route::get("/", "Admin\AuthController@showLoginForm")->name('admin.login');
@@ -49,6 +59,8 @@ Route::prefix('dashboard')->group(function() {
             Route::put('/update/{id}', 'Admin\BancoController@update')->name('banks.update');
             Route::get('/destroy/{id}', 'Admin\BancoController@destroy')->name('banks.destroy');
         });
+
+        Route::get('/leads', 'Admin\LeadsController@index')->name('leads.index');
 
     });
 

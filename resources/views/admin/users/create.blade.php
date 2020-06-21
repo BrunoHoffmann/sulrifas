@@ -40,7 +40,7 @@
                 </li>
             </ul>
 
-            <form class="app_form" action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
+            <form class="app_form" action="{{route('users.store')}}" method="post" enctype="multipart/form-data" autocomplete="off">
                 @csrf
                 <div class="nav_tabs_content">
                     <div id="data">

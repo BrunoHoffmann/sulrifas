@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="backend/assets/images/favicon.png"/>
 
 
-    <title>UpAdmin - Site Control</title>
+    <title>Admin - SulRifas</title>
 
     <meta name="csrf-token" content="{{csrf_token() }}">
 </head>
@@ -22,7 +22,6 @@
     <div class="dash_login_left">
         <article class="dash_login_left_box">
             <header class="dash_login_box_headline">
-                <div class="dash_login_box_headline_logo icon-imob icon-notext"></div>
                 <h1>Login</h1>
             </header>
 
@@ -41,14 +40,7 @@
             </form>
 
             <footer>
-                <p>Desenvolvido por <a href="https://www.upinside.com.br">www.<b>upinside</b>.com.br</a></p>
                 <p>&copy; <?= date("Y"); ?> - Todos os Direitos Reservados</p>
-                <p class="dash_login_left_box_support">
-                    <a target="_blank"
-                       class="icon-whatsapp transition text-green"
-                       href="https://api.whatsapp.com/send?phone=DDI+DDD+TELEFONE&text=Olá, preciso de ajuda com o login."
-                    >Precisa de Suporte?</a>
-                </p>
             </footer>
         </article>
     </div>

@@ -55,3 +55,26 @@ function menuMobile() {
 }
 
 menuMobile();
+
+
+// numbers
+
+function numberSorteio(){
+    const number = document.querySelectorAll('.number-cotas .number');
+    const description = document.querySelectorAll('.number-cotas .description');
+
+    number.forEach(function(item, index1) {
+        item.addEventListener('mousemove', function() {
+            description.forEach(function(element, index2) {
+                if(index1 == index2) {
+                    element.style.display = "block";
+                }else {
+                    element.style.display = "none";
+                }
+            });
+        });
+    });
+
+}
+numberSorteio();
+

@@ -33,9 +33,9 @@ class BankRequest extends FormRequest
             'agency_active' => 'max:2',
             'account' => 'max:20',
             'account_active' => 'max:2',
-            'type' => 'max:30',
-            'type_active' => 'max:2',
-            'active' => 'required|max:2'
+            'type' => 'required|max:30',
+            'type_active' => 'required|max:2',
+            'active' => 'required|max:2',
         ];
     }
 
@@ -52,6 +52,8 @@ class BankRequest extends FormRequest
            'holder_active.required' => 'O campo Ativar titular de Conta é requerido',
            'cpf.required' => 'O campo CPF é requerido',
            'cpf_active.required' => 'O campo Ativar CPF de Conta é requerido',
+           'type.required' => 'O campo Tipo de Conta é requerido',
+           'type_active.required' => 'O campo Ativar Tipo de Conta é requerido',
            'active.required' => 'O campo Ativar Conta é requerido',
            'name.max' => 'O tamanho da Nome da Conta inserido no campo não pode utltrapassar 255 caracteres',
            'holder.max' => 'O tamanho da agência inserido no campo não pode utltrapassar 255 caracteres',
@@ -62,7 +64,7 @@ class BankRequest extends FormRequest
            'account_active.max' => 'O tamanho do campo ativar conta inserido não pode utltrapassar 2 caracteres',
            'type.max' => 'O tamanho do campo Tipo inserido não pode utltrapassar 30 caracteres',
            'type_active.max' => 'O tamanho do campo Ativar Tipo inserido não pode utltrapassar 2 caracteres',
-           'active.max' => 'O tamanho do campo Ativar Conta inserido não pode utltrapassar 2 caracteres'
+           'active.max' => 'O tamanho do campo Ativar Conta inserido não pode utltrapassar 2 caracteres',
         ];
     }
 }

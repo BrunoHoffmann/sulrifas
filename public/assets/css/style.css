@@ -112,6 +112,7 @@
 
 .menu .logo {
     height: 100px;
+    padding: 20px 0;
     transition: all .3s;
 }
 
@@ -162,7 +163,8 @@
 }
 
 .menu-movel .logo {
-    height: 60px;
+    height: 65px;
+    padding: 15px 0 20px 0;
     transition: all .3s;
 }
 
@@ -358,6 +360,303 @@ ul.filtros li:first-child {
     justify-content: space-between !important;
 }
 
+
+/* showItem */
+
+.showItem {
+    display: flex;
+    flex: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 70px;
+    padding-bottom: 20px;
+    color: #fff;
+    border-bottom: 1px solid rgb(78, 78, 78);
+}
+
+.showItem .show-img {
+    width: 65%;
+    margin-right: 50px;
+    min-width: 300px;
+}
+
+.showItem .show-img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.showItem .show-description {
+    width: 30%;
+    min-width: 300px;
+    margin-right: auto;
+    background: #333333;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.showItem .show-description h1 {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.showItem .show-description div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.ganhador {
+    background: #28A745;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.ganhador .ganhador-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+.ganhador .user {
+    font-size: 1.2em;
+}
+
+.ganhador .cota {
+    font-size: .8em;
+}
+
+.description-bottom {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+
+.description-bottom .valor {
+    background: #28A745;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 0;
+    width: 48%;
+}
+
+.description-bottom .valor .valor-title {
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+
+.description-bottom .date {
+    background: #343A40;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 0;
+    width: 48%;
+}
+
+.description-bottom .date .date-title {
+    font-weight: 900;
+    color: rgb(187, 187, 187);
+    text-transform: uppercase;
+}
+
+.showItem .show-description .year span{
+    display: block;
+    color: rgb(199, 199, 199);
+}
+
+.showItem .show-description p {
+    font-size: 1em;
+    margin: 0;
+    color: rgb(199, 199, 199);
+}
+
+.showItem .show-description p:nth-last-child(2) {
+    margin-top: 10px;
+}
+
+.modal-content {
+    margin-top: 100px !important;
+}
+
+/* Bank */
+
+.description-bank {
+    color: rgb(102, 102, 102);
+    margin: 20px 0;
+}
+
+.bank {
+    background: #3d3d3d;
+    border-radius: 10px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+    color: #fff;
+}
+
+.bank h3 {
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.bank p {
+    margin: 0;
+}
+
+/* show open */
+
+.encerra {
+    background: #585858;
+}
+
+.encerra .encerra-title {
+    color: #b1b1b1;
+    margin: 10px;
+    margin-bottom: -10px;
+}
+
+.encerra .encerra-time {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 0;
+}
+
+.encerra .encerra-time div .value{
+    font-weight: 900;
+}
+
+.encerra .encerra-time div .title{
+    font-size: .9em;
+}
+
+.cotas {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.cotas h1 {
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1.8em;
+}
+
+.cotas p {
+    color: rgb(212, 211, 211);
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.cotas ul.filter-cotas {
+    display: flex;
+}
+
+.cotas ul.filter-cotas li {
+    font-weight: 900;
+    padding: 5px 10px;
+}
+
+.cotas ul.filter-cotas li.livre {
+    color: #000;
+    background: #fff;
+    border-radius: 5px 0 0 5px;
+}
+
+.cotas ul.filter-cotas li.livre a {
+    color: #000;
+}
+
+.cotas ul.filter-cotas li.livre a:hover {
+    color: #000;
+}
+
+
+.cotas ul.filter-cotas li.reservado {
+    background: #17A2B8;
+}
+
+.cotas ul.filter-cotas li.reservado a {
+    color: #fff;
+}
+
+.cotas ul.filter-cotas li.reservado a:hover {
+    color: #fff;
+}
+
+.cotas ul.filter-cotas li.pago {
+    background: #28A745;
+    border-radius: 0 5px 5px 0;
+}
+
+.cotas ul.filter-cotas li.pago a {
+    color: #fff;
+}
+
+.cotas ul.filter-cotas li.pago a:hover {
+    color: #fff;
+}
+
+.cotas .btn-vermelho {
+    color: #fff;
+    font-weight: 900;
+}
+
+.number-cotas {
+    margin-top: 30px;
+}
+
+.number-cotas ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.number-cotas ul li {
+    position: relative;
+    margin: 10px 0 !important;
+}
+
+.number-cotas .number {
+    background: #585858;
+    padding: 10px 15px;
+    font-size: .9em;
+    color: #fff;
+    border-radius: 5px;
+    margin: 4px;
+}
+
+.number-cotas .reservado {
+    background: #17A2B8;
+}
+
+.number-cotas .pago {
+    background: #28A745;
+}
+
+.number-cotas .description {
+    display: block;
+    z-index: 999;
+    position: absolute;
+    background: #000;
+    color: yellow;
+    top: -50px;
+    left: -5px;
+    width: 200px;
+    margin: 10px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: .9em;
+    display: none;
+}
+
+
+.form-group label {
+    color: #000 !important;
+}
 
 /* Fale Conosco */
 
