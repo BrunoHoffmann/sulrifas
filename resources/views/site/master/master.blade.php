@@ -42,7 +42,7 @@
                 <div class="logo_icon">
                     <img class="icon-menu" src="{{URL('assets/img/icon/icon-menu.png')}}" alt="Icon menu">
 
-                    <img class="logo" src="{{ URL('assets/img/logo.png') }}" alt="Logo sulrifa">
+                    <a href="{{ Route('home')}}"><img class="logo" src="{{ URL('assets/img/logo.png') }}" alt="Logo sulrifa"></a>
                 </div>
                 <ul>
                     <li><a href="{{ asset('/') }}">Inicio</a></li>

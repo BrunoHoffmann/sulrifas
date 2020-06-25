@@ -1230,6 +1230,8 @@ input:-webkit-autofill {
   left: 10px;
 }
 
+
+
 @media (max-width: 62em) {
   .realty_list_item {
     justify-content: center;

@@ -40,43 +40,56 @@
                 </li>
             </ul>
 
-            <form class="app_form" action="{{route('users.store')}}" method="post" enctype="multipart/form-data">
+            <form class="app_form" action="{{route('sorteios.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="nav_tabs_content">
                     <div id="data">
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*Nome do veículo:</span>
-                                <input type="text" name="name" placeholder="Nome do veículo" value=""/>
+                                <input type="text" name="name" placeholder="Nome do veículo" value="{{old('name')}}"/>
                             </label>
 
                             <label class="label">
                                 <span class="legend">*Ano do veículo:</span>
-                                <input type="number" name="ano" placeholder="Digite o ano do veículo" value=""/>
+                                <input type="number" name="year" placeholder="ex: 2010" value="{{old('year')}}"/>
                             </label>
                         </div>
 
                         <label class="label">
-                            <span class="legend">*Descrição do veículo:</span>
-                            <textarea name="content" id="content" cols="30" rows="5"></textarea>
+                            <span class="legend">*Descrição do veículo: </span>
+                            <textarea name="description" id="content" cols="30" rows="5">{{old('description')}}</textarea>
+
+                            <label class="label">
+                                <span class="legend">*Km:</span>
+                                <input type="text" name="km" placeholder="ex: 0" value="{{old('km')}}"/>
+                            </label>
                         </label>
 
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*Data do sorteio:</span>
-                                <input type="date" name="data_sorteio" placeholder="Digite a data do sorteio" value=""/>
+                                <input type="date" name="data_sorteio" value="{{old('data_sorteio')}}"/>
                             </label>
 
                             <label class="label">
-                                <span class="legend">*Número de Reservas:</span>
-                                <input type="number" name="number_reservations" placeholder="Número de reservas" value=""/>
+                                <span class="legend">*Data da liberação:</span>
+                                <input type="date" name="data_liberar" value="{{old('data_liberar')}}">
                             </label>
                         </div>
 
-                        <label class="label">
-                            <span class="legend">*Valor do número:</span>
-                            <input type="text" name="valor" placeholder="R$ 00,00" value=""/>
-                        </label>
+                        <div class="label_g2">
+                            <label class="label">
+                                <span class="legend">*Número de cotas:</span>
+                                <input type="number" name="cotas" placeholder="ex: 100" value="{{old('cotas')}}"/>
+                            </label>
+
+                            <label class="label">
+                                <span class="legend">*Valor do número:</span>
+                                <input type="text" name="value" placeholder="R$ 00,00" value="{{old('value')}}"/>
+                            </label>
+
+                        </div>
 
                         <div class="label_g2">
                             <label class="label">
@@ -86,18 +99,28 @@
 
                             <label class="label">
                                 <span class="legend">*Fotos do veículo</span>
-                                <input type="file" name="file_photos">
+                                <input type="file" name="file_photos[]" multiple>
                             </label>
                         </div>
 
-                        <label class="label">
-                            <span class="legend">*Ativar:</span>
-                            <select name="ativo" id="ativo">
-                                <option value="1">Sim</option>
-                                <option value="0">Não</option>
-                            </select>
-                        </label>
+                        <div class="label_g2">
+                            <label class="label">
+                                <span class="legend">*Ativar:</span>
+                                <select name="active" id="active">
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>
+                                </select>
+                            </label>
 
+                            <label class="label">
+                                <span class="legend">*Status:</span>
+                                <select name="status" id="status">
+                                    <option value="comprar">Comprar</option>
+                                    <option value="em breve">Em breve</option>
+                                    <option value="ver resultado">Ver Resultado</option>
+                                </select>
+                            </label>
+                        </div>
 
                     <div class="text-right mt-2">
                         <a href="{{route('sorteios.index')}}" class="btn btn-large btn-red">Cancelar

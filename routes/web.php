@@ -46,8 +46,18 @@ Route::prefix('dashboard')->group(function() {
             Route::get('/create', 'Admin\SorteiosController@create')->name('sorteios.create');
             Route::post('/store', 'Admin\SorteiosController@store')->name('sorteios.store');
             Route::get('/edit/{id}', 'Admin\SorteiosController@edit')->name('sorteios.edit');
+            Route::get('/delete/{id}/{name}', 'Admin\SorteiosController@deleteImg')->name('sorteios.delete.img');
             Route::put('/update/{id}', 'Admin\SorteiosController@update')->name('sorteios.update');
             Route::get('/destroy/{id}', 'Admin\SorteiosController@destroy')->name('sorteios.destroy');
+        });
+
+        // Reserva
+        Route::prefix('cotas')->group(function() {
+            Route::get('/{id_sorteio}', 'Admin\CotasController@index')->name('cotas.index');
+            Route::get('/livre/{id_sorteio}/{id}', 'Admin\CotasController@livre')->name('cotas.livre');
+            Route::get('/reservar/{id_sorteio}/{id}', 'Admin\CotasController@createReserva')->name('cotas.reservar');
+            Route::post('/reservar/{id_sorteio}/{id}', 'Admin\CotasController@storeReserva')->name('cotas.store.reserva');
+            Route::get('/pago/{id_sorteio}/{id}', 'Admin\CotasController@pago')->name('cotas.pago');
         });
 
         // Banco

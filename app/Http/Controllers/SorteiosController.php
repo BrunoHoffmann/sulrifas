@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Model\Lead;
 use App\Http\Model\Bank;
+use App\Http\Model\Sorteio;
+use App\Http\Model\Cota;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class SorteiosController extends Controller
 {
@@ -20,26 +24,46 @@ class SorteiosController extends Controller
 
     public function show($slug)
     {
-        $banks = Bank::all();
-        // pegar sorteio no db e mandar os dados pra view
-        $encerrado = true;
-        if($encerrado) {
+        $banks = DB::table('bank')->join('type_bank', 'bank.type_id', '=', 'type_bank.id')
+                                  ->select('bank.*', 'type_bank.name as type_name')
+                                  ->get();
+
+        $sorteio = Sorteio::where('slug', $slug)->first();
+
+        $cotas = DB::table('cotas')->leftjoin('lead', 'cotas.id_lead', '=', 'lead.id')
+                                  ->select('cotas.*', 'lead.name as nome')->where('cotas.id_sorteio', $sorteio->id)
+                                  ->get();
+
+
+        if($sorteio->status !== 'ver resultado') {
             return view('site.sorteios.showOpen', [
                 'slug' => $slug,
-                'banks' => $banks
+                'banks' => $banks,
+                'sorteio' => $sorteio,
+                'cotas' => $cotas
             ]);
         }else {
             return view('site.sorteios.showClosed', [
                 'slug' => $slug,
-                'banks' => $banks
+                'banks' => $banks,
+                'sorteio' => $sorteio,
+                'cotas' => $cotas
             ]);
         }
     }
 
     public function reservar(Request $request, $slug)
     {
-        $lead = Lead::create($request->all());
-
+        $lead = Lead::where('email', $request->email)->first();
+        if(!$lead->id) {
+            $lead = Lead::create($request->all());
+        }
+        $sorteio = Sorteio::where('slug', $slug)->first();
+        $cotas = Cota::where('id_sorteio', $sorteio->id)->update([
+            'id_lead' => $lead->id,
+            'status' => 'reservado'
+        ]);
         return redirect()->route('sorteios.show', $slug);
     }
+
 }

@@ -12,6 +12,8 @@
         <li><a href="">Em Breve</a></li>
     </ul>
     <ul class="flex">
+        @if(isset($sorteios))
+        @foreach($sorteios as $sorteio)
         <li>
             <figure>
                 <span class="lista-notify">Encerrado</span>
@@ -23,6 +25,10 @@
                 </figcaption>
             </figure>
         </li>
+        @endforeach
+        @else
+        <p>Sem sorteios no momento</p>
+        @endif
         <li>
             <figure>
                 <span class="lista-notify">Encerrado</span>

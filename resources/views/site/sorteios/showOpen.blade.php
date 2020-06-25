@@ -10,21 +10,20 @@
     </div>
 
     <div class="show-description">
-        <h1>Fazer 250 - 2020</h1>
+        <h1>{{$sorteio->name}}</h1>
 
         <div class="description-green">
             <div class="description-bottom">
-                <div class="valor"><span class="valor-title">valor</span><span>R$ 25,00</span></div>
-                <div class="date"><span class="date-title">Sorteio</span><span>18/06/2020</span></div>
+                <div class="valor"><span class="valor-title">valor</span><span>{{number_format($sorteio->value, 2, ',', '.')}}</span></div>
+                <div class="date"><span class="date-title">Sorteio</span><span>{{date('d-m-Y', strtotime($sorteio->data_sorteio))}}</span></div>
             </div>
         </div>
         <div class="year">
-            <span>Ano: 2020</span>
-            <span>0 km</span>
+            <span>Ano: {{$sorteio->year}}</span>
+            <span>{{$sorteio->km}} km</span>
         </div>
 
-        <p>* Comprando uma centena por R$ 25,00.</p>
-        <p>Você concorre a um automóvel Fazer 250cc - 0km 2020.</p>
+        <p>{{$sorteio->description}}</p>
 
         <div class="encerra">
             <span class="encerra-title">Encerra em</span>
@@ -50,6 +49,8 @@
     </div>
 </section>
 
+
+@if($sorteio->status == 'comprar')
 <section class="cotas">
     <h1>Cotas</h1>
     <p>Clique e selecione quantas cotas desejar</p>
@@ -63,29 +64,17 @@
     <a href="" class="btn btn-vermelho">Ver meus números</a>
 
     <div class="number-cotas">
-        <ul><?php $a = 0 ?>
-            @while($a < 100)
-            <?php $a++; ?>
+        <ul>
+            @foreach($cotas as $cota)
             <li>
-                <a href="#" class="number" data-toggle="modal" data-target="#exampleModalCenter">0001</a>
-                <span class="description">Pago - Bruno Hoffmann1</span>
+                <a href="" class="number {{$cota->status}}" @if($cota->status != 'livre') data-toggle="modal" data-target="#exampleModal" data-whatever="{{$cota->id}}" @endif >{{$cota->number}}</a>
+                <span class="description">{{$cota->status}} - {{$cota->nome}}</span>
             </li>
-            <li>
-                <a href="#" class="number reservado">0002</a>
-                <span class="description">Pago - Bruno Hoffmann2</span>
-            </li>
-            <li>
-                <a href="#" class="number pago">0003</a>
-                <span class="description">Pago - Bruno Hoffmann3</span>
-            </li>
-            <li>
-                <a href="#" class="number reservado">0004</a>
-                <span class="description">Pago - Bruno Hoffmann4</span>
-            </li>
-            @endwhile
+            @endforeach
         </ul>
     </div>
 </section>
+@endif
 
 {{-- beneficios --}}
 <section class="grid-beneficios">
@@ -125,52 +114,49 @@
 </section>
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+{{-- Model --}}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Reserar Número</h5>
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{route('sorteios.reservar', $slug)}}" method="post">
-                @csrf
-                <div class="form-group">
-                  <label for="name">Nome</label>
-                  <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp" placeholder="Digite seu nome">
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite seu e-mail">
-                  </div>
-                  <div class="form-group">
-                    <label for="phone">Telefone</label>
-                    <input type="phone" class="form-control" name="phone" id="phone" aria-describedby="emailHelp" placeholder="Digite seu telefone">
-                </div>
-                <input type="submit" class="btn btn-primary" value="Reservar">
-                <p class="description-bank">Meio de pagamento abaixo!</p>
-           </form>
-
-            @isset($banks)
-            @foreach($banks as $bank)
-            <div class="bank">
-                <h3>{{$bank->name}}</h3>
-                <p>Títular: Bruno Hoffmann</p>
-                <p>CPF: 012.131.959-85</p>
-                <p>Agência: 0001</p>
-                <p>Conta: 115152521</p>
-                <p>Tipo: Conta Corrente</p>
+          <form action="{{route('sorteios.reservar', $slug, $sorteio->id)}}" method="post">
+            @csrf
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp" placeholder="Digite seu nome">
             </div>
-            @endforeach
-            @endisset
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite seu e-mail">
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="phone" class="form-control" name="phone" id="phone" aria-describedby="emailHelp" placeholder="Digite seu telefone">
+            </div>
+            <input type="submit" value="Reservar" class="btn btn-primary">
+        </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
         </div>
       </div>
     </div>
   </div>
+
+
+
+
+<script>
+
+</script>
+
 @endsection
+
+
+

@@ -14,36 +14,34 @@
                     <li><a href="" class="text-orange">Sorteios</a></li>
                 </ul>
             </nav>
-
-            <a href="{{ route('sorteios.create') }}" class="btn btn-orange icon-user ml-1">Criar Sorteio</a>
         </div>
     </header>
 
     <div class="dash_content_app_box">
+        <a href="{{route('sorteios.index')}}" class="btn btn-large btn-red">Cancelar
+        </a>
         <div class="dash_content_app_box_stage">
             <table id="dataTable" class="nowrap stripe" width="100" style="width: 100% !important;">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Nome</th>
-                    <th>Ativo</th>
-                    <th>Valor</th>
-                    <th>Data Sorteio</th>
+                    <th>Número</th>
+                    <th>status</th>
+                    <th>Comprador</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($sorteios as $sorteio)
+                @foreach($cotas as $item)
                 <tr>
-                    <td>{{$sorteio->id}}</td>
-                    <td>{{$sorteio->name}}</td>
-                    <td>{{($sorteio->active) ? 'sim' : 'Não'}}</td>
-                    <td>{{$sorteio->value}}</td>
-                    <td>{{$sorteio->data_sorteio}}</td>
+                    <td>{{$item->id}}</td>
+                    <td>{{$item->number}}</td>
+                    <td>{{$item->status}}</td>
+                    <td>{{$item->leadName}}</td>
                     <td>
-                        <a href="{{Route('cotas.index', $sorteio->id)}}" class="btn btn-green">Cotas</a>
-                        <a href="{{Route('sorteios.edit', $sorteio->id)}}" class="btn btn-blue">Editar</a>
-                        <a href="{{Route('sorteios.destroy', $sorteio->id)}}" class="btn btn-red">Deletar</a>
+                        <a href="{{Route('cotas.livre',['id_sorteio' => $id_sorteio, 'id' => $item->id])}}" class="btn btn-white">Livre</a>
+                        <a href="{{Route('cotas.reservar', ['id_sorteio' => $id_sorteio, 'id' => $item->id])}}" class="btn btn-blue">Reservar</a>
+                        <a href="{{Route('cotas.pago', ['id_sorteio' => $id_sorteio, 'id' => $item->id])}}" class="btn btn-green">Pago</a>
                     </td>
                 </tr>
                 @endforeach

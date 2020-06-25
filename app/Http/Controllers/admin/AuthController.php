@@ -56,6 +56,7 @@ class AuthController extends Controller
         }
         $nameUser = User::firstWhere('email', $request->email);
         session(['user' => $nameUser['name']]);
+        session(['id' => $nameUser['id']]);
 
         $json['redirect'] = route('admin.home');
         return response()->json($json);

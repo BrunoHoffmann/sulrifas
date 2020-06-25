@@ -750,6 +750,16 @@ ul.filtros li:first-child {
     background: red;
 }
 
+.btn-azul {
+    background: #17A2B8;
+    transition: all .3s;
+}
+
+
+.btn-azul:hover {
+    background: #272727;
+}
+
 .btn-verde {
     background: rgb(89, 196, 67);
     transition: all .3s;
