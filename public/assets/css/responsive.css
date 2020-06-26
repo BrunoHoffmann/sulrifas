@@ -87,7 +87,7 @@
     .back-principal {
         background-image: linear-gradient(to right, #000 30%, rgba(0,0,0,0));
         width: 70%;
-        height: 300px;
+        height: 200px;
         z-index: 5;
     }
 
@@ -102,15 +102,17 @@
     }
 
     .principal figure img {
-        height: 300px;
+        height: 200px;
         overflow: hidden;
     }
 
     .principal figure figcaption {
         position: relative;
-        z-index: 6;
+        z-index: 10000000000000000000;
         color: #fff;
         margin-left: 70px;
+        position: relative;
+        top: -170px;
     }
 
 
@@ -147,5 +149,14 @@
         display: none;
     }
 
+    .lista-sorteios img.logo{
+        width: 90%;
+        height: 90%;
+    }
+
+    .show-img img.logo{
+        width: 90% !important;
+        height: 90% !important;
+    }
 
 }

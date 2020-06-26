@@ -8,7 +8,9 @@ Route::get('/', 'HomeController@index')->name('home');
 // Sorteios
 Route::prefix('sorteios')->group(function() {
     Route::get("/", "SorteiosController@index")->name('sorteios');
-    Route::get('/{slug}', 'SorteiosController@show')->name('sorteios.show');
+    Route::get("/{tag}", "SorteiosController@index")->name('sorteios.search');
+    Route::get('/show/{slug}', 'SorteiosController@show')->name('sorteios.show');
+    Route::get('/show/{slug}/{filter}', 'SorteiosController@filter')->name('sorteios.tag');
     Route::post('/reservar/{slug}', 'SorteiosController@reservar')->name('sorteios.reservar');
 });
 

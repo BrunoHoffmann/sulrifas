@@ -13,7 +13,7 @@
             <div class="principal-legenda">
                 <h1>{{$ultimo->name}}</h1>
                 <span>{{$ultimo->year}}</span>
-                <a href="{{Route('sorteios.show', $ultimo->id)}}" class="btn-compra">Comprar rifa</a>
+                <a href="{{Route('sorteios.show', $ultimo->slug)}}" class="btn-compra">Comprar rifa</a>
             </div>
         </figcaption>
     </figure>
@@ -38,9 +38,8 @@
         </li>
         @endforeach
         @else
-        <p>Sem sorteios no momento</p>
+            <p>Sem sorteios no momento</p>
         @endif
-
     </ul>
 </section>
 

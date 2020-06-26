@@ -20,6 +20,7 @@ class HomeController extends Controller
         $ultimo = DB::table('sorteios')
                     ->join('sorteios_capas', 'sorteios_capas.id_sorteio', '=', 'sorteios.id')
                     ->select('sorteios.*', 'sorteios_capas.name as capa')
+                    ->where('sorteios.status', 'comprar')
                     ->orderBy('sorteios.id', 'desc')
                     ->first();
 

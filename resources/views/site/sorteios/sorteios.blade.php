@@ -6,103 +6,31 @@
 
 <section class="sorteios">
     <ul class="filtros">
-        <li><a href="">Todos</a></li>
-        <li><a href="">Abertos</a></li>
-        <li><a href="">Encerrados</a></li>
-        <li><a href="">Em Breve</a></li>
+        <li><a href="{{Route('sorteios')}}">Todos</a></li>
+        <li><a href="{{Route('sorteios.search', 'comprar')}}">Abertos</a></li>
+        <li><a href="{{Route('sorteios.search', 'encerrado')}}">Encerrados</a></li>
+        <li><a href="{{Route('sorteios.search', 'breve')}}">Em Breve</a></li>
     </ul>
     <ul class="flex">
         @if(isset($sorteios))
         @foreach($sorteios as $sorteio)
         <li>
             <figure>
-                <span class="lista-notify">Encerrado</span>
-                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
+                @if($sorteio->status == 'ver resultado')<span class="lista-notify">Encerrado</span>@endif
+                <img src="{{ url('/../storage/app/public/capas/' . $sorteio->capa) }}" alt="{{$sorteio->name}}" class="capa">
                 <figcaption>
-                    <h3>Lander 250cc</h3>
-                    <span class="description">Sorteio dia 27/05/2020</span>
-                    <a class="btnn btn-vermelho" href="{{route('sorteios.show', $slug)}}">Ver Resultado  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
+                    <h3>{{$sorteio->name}}</h3>
+                    <span class="description">Sorteio dia {{$sorteio->data_sorteio}}</span>
+                    <a class="btnn btn-{{($sorteio->status == 'comprar') ? 'verde' : (($sorteio->status == 'em breve') ? 'azul' : 'vermelho' ) }}" href="{{Route('sorteios.show', $sorteio->slug)}}">{{$sorteio->status}}<img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
                 </figcaption>
             </figure>
         </li>
         @endforeach
         @else
-        <p>Sem sorteios no momento</p>
+            <p>Sem sorteios no momento</p>
         @endif
-        <li>
-            <figure>
-                <span class="lista-notify">Encerrado</span>
-                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
-                <figcaption>
-                    <h3>Lander 250cc</h3>
-                    <span class="description">Sorteio dia 27/05/2020</span>
-                    <a class="btnn btn-vermelho" href="{{route('sorteios.show', $slug)}}">Ver Resultado  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
-                <figcaption>
-                    <h3>Lander 250cc</h3>
-                    <span class="description">Sorteio dia 27/05/2020</span>
-                    <a class="btnn btn-verde" href="{{route('sorteios.show', $slug)}}">Comprar Rifa  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
-                <figcaption>
-                    <h3>Lander 250cc</h3>
-                    <span class="description">Sorteio dia 27/05/2020</span>
-                    <a class="btnn btn-verde" href="{{route('sorteios.show', $slug)}}">Comprar Rifa  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <span class="lista-notify">Encerrado</span>
-                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
-                <figcaption>
-                    <h3>Lander 250cc</h3>
-                    <span class="description">Sorteio dia 27/05/2020</span>
-                    <a class="btnn btn-vermelho" href="{{route('sorteios.show', $slug)}}">Ver Resultado  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
-                <figcaption>
-                    <h3>Lander 250cc</h3>
-                    <span class="description">Sorteio dia 27/05/2020</span>
-                    <a class="btnn btn-verde" href="{{route('sorteios.show', $slug)}}">Comprar Rifa  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
-                </figcaption>
-            </figure>
-        </li>
-        <li>
-            <figure>
-                <span class="lista-notify">Encerrado</span>
-                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
-                <figcaption>
-                    <h3>Lander 250cc</h3>
-                    <span class="description">Sorteio dia 27/05/2020</span>
-                    <a class="btnn btn-vermelho" href="{{route('sorteios.show', $slug)}}">Ver Resultado  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
-                </figcaption>
-            </figure>
-        </li>
 
-        <li>
-            <figure>
-                <img src="{{URL('assets/img/moto01.webp')}}" alt="">
-                <figcaption>
-                    <h3>Lander 250cc</h3>
-                    <span class="description">Sorteio dia 27/05/2020</span>
-                    <a class="btnn btn-verde" href="{{route('sorteios.show', $slug)}}">Comprar Rifa  <img class="icon-correto" src="{{ URL('assets/img/correto.png') }}"></a>
-                </figcaption>
-            </figure>
-        </li>
+
     </ul>
 </section>
 

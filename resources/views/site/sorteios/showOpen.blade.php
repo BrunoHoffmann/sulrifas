@@ -3,10 +3,28 @@
 @section('title', 'Title do veiculo - SulRifas')
 
 @section('content')
-
+{{-- slide --}}
 <section class="showItem flex">
     <div class="show-img">
-        <img src="{{url('assets/img/carro1.png')}}" alt="description">
+        {{-- slide --}}
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @foreach($imgs as $index => $img)
+                <div class="carousel-item {{($index == 0) ? 'active' : ''}}">
+                    <img src="{{ url('/../storage/app/public/imagensSorteio/' . $img) }}" alt="{{$sorteio->name}}" class="logo">
+                </div>
+                @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          {{-- fim slide --}}
     </div>
 
     <div class="show-description">
@@ -48,17 +66,18 @@
         </div>
     </div>
 </section>
+{{-- fim sorteio --}}
 
-
+  {{-- cotas --}}
 @if($sorteio->status == 'comprar')
 <section class="cotas">
     <h1>Cotas</h1>
     <p>Clique e selecione quantas cotas desejar</p>
 
     <ul class="filter-cotas">
-        <li class="livre"><a href="">Livre (999)</a></li>
-        <li class="reservado"><a href="">Reservado (999)</a></li>
-        <li class="pago"><a href="">Pago (999)</a></li>
+        <li class="livre"><a href="{{Route('sorteios.filter', ['slug' => $slug, 'filter' => 'livre'])}}">Livre ({{$livre}})</a></li>
+        <li class="reservado"><a href="{{Route('sorteios.filter', ['slug' => $slug, 'filter' => 'reservado'])}}">Reservado ({{$reservado}})</a></li>
+        <li class="pago"><a href="{{Route('sorteios.filter', ['slug' => $slug, 'filter' => 'pago'])}}">Pago ({{$pago}})</a></li>
     </ul>
 
     <a href="" class="btn btn-vermelho">Ver meus números</a>
@@ -67,14 +86,22 @@
         <ul>
             @foreach($cotas as $cota)
             <li>
-                <a href="" class="number {{$cota->status}}" @if($cota->status != 'livre') data-toggle="modal" data-target="#exampleModal" data-whatever="{{$cota->id}}" @endif >{{$cota->number}}</a>
-                <span class="description">{{$cota->status}} - {{$cota->nome}}</span>
+                <a href="" id="{{$cota->id}}" class="number {{$cota->status}}"
+                        @if($cota->status == 'livre')
+                        data-toggle="modal" data-target="#reserva" data-whatever="{{$cota->id}}" data-some-id="{{$cota->id}}"
+                        @endif >
+                    {{$cota->number}}
+                </a>
+                <span class="description">{{$cota->status}} <span class="description-name">{{$cota->nome}}</span></span>
             </li>
             @endforeach
         </ul>
     </div>
 </section>
 @endif
+{{-- Fim Cotas --}}
+
+
 
 {{-- beneficios --}}
 <section class="grid-beneficios">
@@ -112,10 +139,46 @@
     </div>
 </div>
 </section>
+{{-- Fim beneficios --}}
 
+{{-- Model Bank --}}
+@if($activeBank)
+<div class="modal fade" id="banco" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Bancos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <p>Tem 12 horas para fazer o depósito!</p>
+        @if(!empty($banks[0]))
+            @foreach($banks as $bank)
+                <div class="bank">
+                    <h3>{{$bank->name}}</h3>
+                    <p>Títular: Bruno Hoffmann</p>
+                    <p>CPF: 012.131.959-85</p>
+                    <p>Agência: 0001</p>
+                    <p>Conta: 115152521</p>
+                    <p>Tipo: Conta Corrente</p>
+                </div>
+            @endforeach
+        @else
+            <p>Sem bancos cadastrados</p>
+        @endif
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+@endif
 
-{{-- Model --}}
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- Model form reserva --}}
+<div class="modal fade" id="reserva" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -127,17 +190,19 @@
         <div class="modal-body">
           <form action="{{route('sorteios.reservar', $slug, $sorteio->id)}}" method="post">
             @csrf
+
+            <input type="text" name="cota" class="form-control" id="cota" style="display: none;">
             <div class="form-group">
               <label for="name">Nome</label>
-              <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp" placeholder="Digite seu nome">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Digite seu nome">
             </div>
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="text" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Digite seu e-mail">
+                <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu e-mail">
               </div>
               <div class="form-group">
                 <label for="phone">Telefone</label>
-                <input type="phone" class="form-control" name="phone" id="phone" aria-describedby="emailHelp" placeholder="Digite seu telefone">
+                <input type="phone" class="form-control" name="phone" id="phone" placeholder="Digite seu telefone">
             </div>
             <input type="submit" value="Reservar" class="btn btn-primary">
         </form>
@@ -149,14 +214,21 @@
     </div>
   </div>
 
-
-
+@endsection
+@section('js')
 
 <script>
+    const btn = document.querySelectorAll('.livre');
+    btn.forEach(function(item) {
+        item.addEventListener('click', function() {
+            document.getElementById('cota').value = item.getAttribute('id');
+        });
+    });
 
+    $('#banco').modal('show');
 </script>
-
 @endsection
+
 
 
 
