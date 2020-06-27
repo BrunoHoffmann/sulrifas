@@ -3,6 +3,7 @@
 @section('title', 'Sulrifas - Sorteios de carros e motos')
 
 @section('content')
+@if(isset($ultimo))
 <main class="principal">
     <div class="back-principal"></div>
     <figure>
@@ -18,6 +19,11 @@
         </figcaption>
     </figure>
 </main>
+@else
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+@endif
 
 {{-- sorteios --}}
 <section class="lista-sorteios">

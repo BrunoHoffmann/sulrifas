@@ -17,6 +17,7 @@ class Cota extends Model
         'id_sorteio',
         'number',
         'status',
-        'id_lead'
+        'id_lead',
+        'time_compra'
     ];
 }

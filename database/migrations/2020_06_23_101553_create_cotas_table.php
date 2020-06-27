@@ -19,6 +19,7 @@ class CreateCotasTable extends Migration
             $table->string('number');
             $table->string('status')->default('livre');
             $table->integer('id_lead')->nullable();
+            $table->timestamp('time_compra')->nullable();
             $table->timestamps();
         });
     }

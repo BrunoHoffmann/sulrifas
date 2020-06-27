@@ -52,10 +52,10 @@ class SorteiosController extends Controller
                                   ->get();
 
         $sorteio = DB::table('sorteios')
-        ->join('sorteios_img', 'sorteios_img.id_sorteio', '=', 'sorteios.id')
-        ->where('sorteios.slug', $slug)
-        ->select('sorteios.*', 'sorteios_img.name as imgs')
-        ->get();
+                        ->join('sorteios_img', 'sorteios_img.id_sorteio', '=', 'sorteios.id')
+                        ->where('sorteios.slug', $slug)
+                        ->select('sorteios.*', 'sorteios_img.name as imgs')
+                        ->get();
 
         $imgs = [];
         $count = 0;
@@ -64,13 +64,37 @@ class SorteiosController extends Controller
             $count++;
         }
 
-        $cotas = DB::table('cotas')->leftjoin('lead', 'cotas.id_lead', '=', 'lead.id')
-                                  ->select('cotas.*', 'lead.name as nome')->where('cotas.id_sorteio', $sorteio[0]->id)
-                                  ->get();
+        if(!$filter or $filter == 'todos') {
+            $cotas = DB::table('cotas')
+            ->leftjoin('lead', 'cotas.id_lead', '=', 'lead.id')
+            ->select('cotas.*', 'lead.name as nome')
+            ->where('cotas.id_sorteio', $sorteio[0]->id)
+            ->get();
+        }else {
+            $cotas = DB::table('cotas')
+            ->leftjoin('lead', 'cotas.id_lead', '=', 'lead.id')
+            ->select('cotas.*', 'lead.name as nome')
+            ->where('cotas.id_sorteio', $sorteio[0]->id)
+            ->where('status', $filter)
+            ->get();
+        }
 
         $livre = Cota::where('id_sorteio', $sorteio[0]->id)->where('status', 'livre')->count();
         $reservado = Cota::where('id_sorteio', $sorteio[0]->id)->where('status', 'reservado')->count();
         $pago = Cota::where('id_sorteio', $sorteio[0]->id)->where('status', 'pago')->count();
+
+        if($sorteio[0]->status == 'em breve') {
+            $data = $sorteio[0]->data_liberar;
+        }else {
+            $data = $sorteio[0]->data_sorteio;
+        }
+
+        if(date('Y-m-d') <= $sorteio[0]->data_sorteio) {
+            Sorteio::find($sorteio[0]->id)->update([
+                'status' => 'comprar'
+            ]);
+        }
+
 
         if($sorteio[0]->status !== 'ver resultado') {
             return view('site.sorteios.showOpen', [
@@ -82,7 +106,8 @@ class SorteiosController extends Controller
                 'reservado' => $reservado,
                 'pago' => $pago,
                 'activeBank' => $activeBank,
-                'imgs' => $imgs
+                'imgs' => $imgs,
+                'data' => $data
             ]);
         }else {
             return view('site.sorteios.showClosed', [
@@ -105,10 +130,13 @@ class SorteiosController extends Controller
                 $lead = Lead::create($request->all());
             }
 
+            $dataAtual = date("Y-m-d h:i:sa");
+
             $sorteio = Sorteio::where('slug', $slug)->first();
             $cotas = Cota::find($request->cota)->update([
                 'id_lead' => $lead->id,
-                'status' => 'reservado'
+                'status' => 'reservado',
+                'time_compra' => $dataAtual
             ]);
 
             $activeBank = true;

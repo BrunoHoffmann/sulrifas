@@ -33,7 +33,7 @@
         <div class="description-green">
             <div class="description-bottom">
                 <div class="valor"><span class="valor-title">valor</span><span>{{number_format($sorteio->value, 2, ',', '.')}}</span></div>
-                <div class="date"><span class="date-title">Sorteio</span><span>{{date('d-m-Y', strtotime($sorteio->data_sorteio))}}</span></div>
+                <div class="date"><span class="date-title">{{$sorteio->status == 'em breve' ? 'Libera' : 'Sorteio'}}</span><span>{{date('d-m-Y', strtotime($data))}}</span></div>
             </div>
         </div>
         <div class="year">
@@ -43,27 +43,6 @@
 
         <p>{{$sorteio->description}}</p>
 
-        <div class="encerra">
-            <span class="encerra-title">Encerra em</span>
-            <div class="encerra-time">
-                <div>
-                    <span class="value">00</span>
-                    <span class="title">Dia</span>
-                </div>
-                <div>
-                    <span class="value">00</span>
-                    <span class="title">horas</span>
-                </div>
-                <div>
-                    <span class="value">00</span>
-                    <span class="title">Minutos</span>
-                </div>
-                <div>
-                    <span class="value">00</span>
-                    <span class="title">Segundos</span>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 {{-- fim sorteio --}}
@@ -80,7 +59,7 @@
         <li class="pago"><a href="{{Route('sorteios.filter', ['slug' => $slug, 'filter' => 'pago'])}}">Pago ({{$pago}})</a></li>
     </ul>
 
-    <a href="" class="btn btn-vermelho">Ver meus números</a>
+    <a href="{{Route('sorteios.filter', ['slug' => $slug, 'filter' => 'todos'])}}" class="btn btn-vermelho">Todos</a>
 
     <div class="number-cotas">
         <ul>
@@ -153,7 +132,7 @@
           </button>
         </div>
         <div class="modal-body">
-        <p>Tem 12 horas para fazer o depósito!</p>
+        <p>Você tem 12 horas para fazer o depósito, caso não faça até lá, o número voltará a estar livre!</p>
         @if(!empty($banks[0]))
             @foreach($banks as $bank)
                 <div class="bank">
