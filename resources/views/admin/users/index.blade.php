@@ -4,7 +4,7 @@
 <section class="dash_content_app">
 
     <header class="dash_content_app_header">
-        <h2 class="icon-search">Filtro</h2>
+        <h2 class="icon-search">Usuários</h2>
 
         <div class="dash_content_app_header_actions">
             <nav class="dash_content_app_breadcrumb">

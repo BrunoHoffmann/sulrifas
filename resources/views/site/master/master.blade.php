@@ -21,20 +21,6 @@
 <body>
     {{-- header start --}}
     <header id="cabecalho">
-        <div class="topo-cabecalho">
-            <div class="topo-cabecalho-left">
-                <div>
-                    <p>CNPJ: 36.985.896/0001-52</p>
-                </div>
-
-                <div>
-                    <p>FILANTROPIA PREMIÁVEL REGULAMENTADA NA LEI FEDERAL Nº 13.019/14 ART. 84 B, 84 C</p>
-                </div>
-            </div>
-            <div class="topo-icon">
-                <li><a href="{{ asset('/') }}"><span>Instagram</span><img src="{{ URL('assets/img/icon/instagram-logo.png') }}" alt="Instagram"></a></li>
-            </div>
-        </div>
 
         {{-- MENU START --}}
         <nav id="menu" class="menu-mobile">

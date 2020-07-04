@@ -46,23 +46,32 @@
                     <div id="data">
                         <div class="label_g2">
                             <label class="label">
-
                                 <span class="legend">*Lead:</span>
-                                    <select name="lead" id="lead" class="search">
+                                    <select name="lead" id="lead" class="search js-example-basic-single" data-live-search="true">
                                         @foreach($leads as $item)
                                             <option value="{{$item->id}}">{{$item->name}} - {{$item->email}} - {{$item->phone}}</option>
                                         @endforeach
                                     </select>
                             </label>
-
-                    <div class="text-right mt-2">
-                        <a href="{{route('cotas.index', $id_sorteio)}}" class="btn btn-large btn-red">Cancelar
-                        </a>
-                        <button class="btn btn-large btn-green icon-check-square-o" type="submit">Reserva</button>
+                            <div class="text-right mt-2">
+                                <a href="{{route('cotas.index', $id_sorteio)}}" class="btn btn-large btn-red">Cancelar
+                                </a>
+                                <button class="btn btn-large btn-green icon-check-square-o" type="submit">Reserva</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </section>
+@endsection
+
+@section("js")
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 @endsection

@@ -25,6 +25,7 @@ class CreateSorteiosTable extends Migration
             $table->decimal('value', 8,2);
             $table->integer('km');
             $table->string('status');
+            $table->string("winner")->nullable();
             $table->integer('active');
             $table->timestamps();
         });

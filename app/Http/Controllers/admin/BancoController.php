@@ -4,8 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Model\Bank;
 use App\Http\Model\Type_bank;
+use App\Http\Model\Bank;
 use App\Http\Requests\BankRequest;
 
 class BancoController extends Controller
@@ -128,9 +128,9 @@ class BancoController extends Controller
      */
     public function destroy($id)
     {
-        $bank = bank::where('id', $id)->delete();
+        $bank = bank::find($id)->delete();
 
-        if(!empty($bank[0]->id)) {
+        if(!empty($bank->id)) {
             return view('admin.bank.edit', [
                 'error' => 'Não foi possivel deletar usuário'
             ]);
@@ -138,6 +138,5 @@ class BancoController extends Controller
 
         return redirect()->route('banks.index');
     }
-
 
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{url(mix('backend/assets/css/reset.css'))}}"/>
     <link rel="stylesheet" href="{{url(mix('backend/assets/css/libs.css'))}}">
     <link rel="stylesheet" href="{{url(mix('backend/assets/css/boot.css'))}}"/>
@@ -52,6 +53,9 @@
             <li class="dash_sidebar_nav_item {{isActive('banks')}}">
                 <a class="icon-home" href="{{route('banks.index')}}">Banco</a>
             </li>
+            <li class="dash_sidebar_nav_item {{isActive('instituicoes')}}">
+                <a class="icon-industry" href="{{route('instituicoes.index')}}">Instituições</a>
+            </li>
             <li class="dash_sidebar_nav_item {{isActive('leads')}}">
                 <a class="icon-bar-chart" href="{{route('leads.index')}}">Leads</a>
             </li>
@@ -86,6 +90,7 @@
 
 <script src="{{ url(mix('backend/assets/js/jquery.js'))}}"></script>
 <script src="{{ url(mix('backend/assets/js/libs.js'))}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script src="{{ url(mix('backend/assets/js/scripts.js'))}}"></script>
 
 @hasSection('js')

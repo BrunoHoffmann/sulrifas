@@ -4,9 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Model\User;
 use App\Http\Model\Cota;
 use App\Http\Model\Sorteio;
+use Illuminate\Support\Facades\DB;
 use App\Http\Model\Sorteio_capa;
 use App\Http\Model\Sorteio_img;
 use Illuminate\Support\Str;
@@ -22,7 +22,11 @@ class SorteiosController extends Controller
      */
     public function index()
     {
-        $sorteios = Sorteio::all();
+        $sorteios = DB::table('sorteios')
+                        ->leftJoin("cotas", "cotas.id", "=", "sorteios.winner")
+                        ->leftJoin("lead", "lead.id", "=", "cotas.id_lead")
+                        ->select('sorteios.*', 'lead.name as ganhador')
+                        ->get();
 
         return view('admin.sorteios.index', [
             "sorteios" => $sorteios
@@ -153,8 +157,6 @@ class SorteiosController extends Controller
                 return '0' . $number;
             }
         }
-
-
         return $number;
     }
 
@@ -167,7 +169,8 @@ class SorteiosController extends Controller
     public function edit($id)
     {
         $sorteio = Sorteio::find($id);
-        $cotas = Cota::where('id_sorteio', $id)->count();
+        $cotasCount = Cota::where('id_sorteio', $id)->count();
+        $cotas = Cota::where('id_sorteio', $id)->get();
         $capa = Sorteio_capa::firstWhere('id_sorteio', $id);
         $photos = Sorteio_img::where('id_sorteio', $id)->get();
 
@@ -175,6 +178,7 @@ class SorteiosController extends Controller
             'sorteio' => $sorteio,
             'file_capa' => $capa,
             'file_photos' => $photos,
+            'cotasCount' => $cotasCount,
             'cotas' => $cotas
         ]);
     }
@@ -199,6 +203,7 @@ class SorteiosController extends Controller
      */
     public function update(SorteioRequest $request, $id)
     {
+
         $slug = Str::slug($request->name, '-');
 
         $data_liberar = $request->data_liberar;
@@ -214,9 +219,10 @@ class SorteiosController extends Controller
             'data_liberar' => $data_liberar,
             'value' => $request->value,
             'km' => $request->km,
-            'status' => $request->status,
+            'winner' => $request->winner,
             'active' => $request->active
         ]);
+
         $idSorteio = Sorteio::find($id);
 
         $id = $idSorteio->id;

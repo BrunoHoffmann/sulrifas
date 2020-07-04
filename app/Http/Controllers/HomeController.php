@@ -29,4 +29,9 @@ class HomeController extends Controller
             'ultimo' => $ultimo
         ]);
     }
+
+    public function error()
+    {
+        return view('site.404');
+    }
 }

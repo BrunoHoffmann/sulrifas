@@ -4,7 +4,7 @@
 <section class="dash_content_app">
 
     <header class="dash_content_app_header">
-        <h2 class="icon-search">Filtro</h2>
+        <h2 class="icon-search">Cotas</h2>
 
         <div class="dash_content_app_header_actions">
             <nav class="dash_content_app_breadcrumb">
@@ -42,6 +42,7 @@
                         <a href="{{Route('cotas.livre',['id_sorteio' => $id_sorteio, 'id' => $item->id])}}" class="btn btn-white">Livre</a>
                         <a href="{{Route('cotas.reservar', ['id_sorteio' => $id_sorteio, 'id' => $item->id])}}" class="btn btn-blue">Reservar</a>
                         <a href="{{Route('cotas.pago', ['id_sorteio' => $id_sorteio, 'id' => $item->id])}}" class="btn btn-green">Pago</a>
+                        <a href="{{Route('cotas.ganhador', ['id_sorteio' => $id_sorteio, 'id' => $item->id])}}" class="btn btn-yellow">Ganhador</a>
                     </td>
                 </tr>
                 @endforeach

@@ -53,10 +53,11 @@ class SorteiosController extends Controller
 
         $sorteio = DB::table('sorteios')
                         ->join('sorteios_img', 'sorteios_img.id_sorteio', '=', 'sorteios.id')
+                        ->leftJoin("cotas", "cotas.id", "=", "sorteios.winner")
+                        ->leftJoin("lead", "lead.id", "=", "cotas.id_lead")
                         ->where('sorteios.slug', $slug)
-                        ->select('sorteios.*', 'sorteios_img.name as imgs')
+                        ->select('sorteios.*', 'sorteios_img.name as imgs', 'lead.name as ganhador')
                         ->get();
-
         $imgs = [];
         $count = 0;
         foreach($sorteio as $item) {
@@ -130,8 +131,7 @@ class SorteiosController extends Controller
                 $lead = Lead::create($request->all());
             }
 
-            $dataAtual = date("Y-m-d h:i:sa");
-
+            $dataAtual = date("Y-m-d h:i:s");
             $sorteio = Sorteio::where('slug', $slug)->first();
             $cotas = Cota::find($request->cota)->update([
                 'id_lead' => $lead->id,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Model\Cota;
+use App\Http\Model\Sorteio;
 use App\Http\Model\Lead;
 use Illuminate\Support\Facades\DB;
 
@@ -101,5 +102,20 @@ class CotasController extends Controller
         return redirect()->route('cotas.index', $id_sorteio);
     }
 
+    /**
+     * Ganhador
+     */
+    public function winner($id_sorteio, $id)
+    {
+        $verifica = Cota::find($id);
 
+        if($verifica->id_lead and $verifica->status == 'pago') {
+            $sorteio = Sorteio::find($id_sorteio)->update([
+                "winner" => $id,
+                "status" => "ver resultado"
+            ]);
+        }
+
+        return redirect()->route('cotas.index', $id_sorteio);
+    }
 }

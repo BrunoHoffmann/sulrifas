@@ -1,16 +1,23 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Model\Instituicao;
 
 
 class InstituicoesController extends Controller
 {
     public function index()
     {
-        
-        return view("site.instituicoes");
+        $instituicoes = Instituicao::where('active', 1)->get();
+
+        if(!$instituicoes) {
+            $instituicoes = [];
+        }
+        return view("site.instituicoes", [
+            'instituicoes' => $instituicoes
+        ]);
     }
 }

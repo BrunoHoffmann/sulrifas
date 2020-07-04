@@ -4,16 +4,18 @@
 <section class="dash_content_app">
 
     <header class="dash_content_app_header">
-        <h2 class="icon-search">Listagem de Leads</h2>
+        <h2 class="icon-search">Instituições</h2>
 
         <div class="dash_content_app_header_actions">
             <nav class="dash_content_app_breadcrumb">
                 <ul>
                     <li><a href="">Dashboard</a></li>
                     <li class="separator icon-angle-right icon-notext"></li>
-                    <li><a href="" class="text-orange">Leads</a></li>
+                    <li><a href="" class="text-orange">Instituições</a></li>
                 </ul>
             </nav>
+
+            <a href="{{ route('instituicoes.create') }}" class="btn btn-orange icon-user ml-1">Criar Instituição</a>
         </div>
     </header>
 
@@ -24,20 +26,25 @@
                 <tr>
                     <th>#</th>
                     <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Telefone</th>
+                    <th>CNPJ</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Link</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($leads as $lead)
+                @foreach($instituicoes as $item)
                 <tr>
-                    <td>{{$lead->id}}</td>
-                    <td>{{$lead->name}}</td>
-                    <td>{{$lead->email}}</td>
-                    <td>{{$lead->phone}}</td>
+                    <td>{{$item->id}}</td>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->cnpj}}</td>
+                    <td>{{$item->city}}</td>
+                    <td>{{$item->state}}</td>
+                    <td>{{ ($item->active == '1') ? 'Sim' : 'Não'  }}</td>
                     <td>
-                        <a href="{{Route('leads.destroy', $lead->id)}}" class="btn btn-red">Deletar</a>
+                        <a href="{{Route('instituicoes.edit', $item->id)}}" class="btn btn-blue">Editar</a>
+                        <a href="{{Route('instituicoes.destroy', $item->id)}}" class="btn btn-red">Deletar</a>
                     </td>
                 </tr>
                 @endforeach

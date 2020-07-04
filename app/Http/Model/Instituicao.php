@@ -4,9 +4,9 @@ namespace App\Http\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sorteio extends Model
+class Instituicao extends Model
 {
-    protected $table = 'sorteios';
+    protected $table = 'instituicoes';
 
     /**
      * The attributes that are mass assignable.
@@ -15,15 +15,12 @@ class Sorteio extends Model
      */
     protected $fillable = [
         'name',
-        'slug',
-        'year',
-        'description',
-        'data_sorteio',
-        'data_liberar',
-        'value',
-        'km',
-        'status',
-        'winner',
+        'cnpj',
+        'city',
+        'state',
+        'link',
+        'background',
+        'name_photo',
         'active'
     ];
 }

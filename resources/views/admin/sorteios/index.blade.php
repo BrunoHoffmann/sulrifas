@@ -4,7 +4,7 @@
 <section class="dash_content_app">
 
     <header class="dash_content_app_header">
-        <h2 class="icon-search">Filtro</h2>
+        <h2 class="icon-search">Sorteios</h2>
 
         <div class="dash_content_app_header_actions">
             <nav class="dash_content_app_breadcrumb">
@@ -29,6 +29,7 @@
                     <th>Ativo</th>
                     <th>Valor</th>
                     <th>Data Sorteio</th>
+                    <th>Ganhador</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
@@ -40,6 +41,7 @@
                     <td>{{($sorteio->active) ? 'sim' : 'Não'}}</td>
                     <td>{{$sorteio->value}}</td>
                     <td>{{$sorteio->data_sorteio}}</td>
+                    <td>{{$sorteio->ganhador}}</td>
                     <td>
                         <a href="{{Route('cotas.index', $sorteio->id)}}" class="btn btn-green">Cotas</a>
                         <a href="{{Route('sorteios.edit', $sorteio->id)}}" class="btn btn-blue">Editar</a>

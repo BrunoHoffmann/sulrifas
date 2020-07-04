@@ -29,9 +29,6 @@
                         <p class="icon-asterisk">{{$error}}</p>
                     </div>
                 @endforeach
-                <div class="message message-orange">
-                    <p class="icon-asterisk">{{$error}}</p>
-                </div>
             @endif
 
             <ul class="nav_tabs">
@@ -82,15 +79,14 @@
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*Número de cotas:</span>
-                                <input type="number" name="cotas" placeholder="ex: 100" value="{{$cotas}}"/>
+                                <input type="number" name="cotas" placeholder="ex: 100" value="{{$cotasCount}}"/>
                             </label>
-
                             <label class="label">
                                 <span class="legend">*Valor do número:</span>
                                 <input type="text" name="value" placeholder="R$ 00,00" value="{{$sorteio->value}}"/>
                             </label>
-
                         </div>
+
 
                         <div class="label_g2">
                             <label class="label">
@@ -147,4 +143,13 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section("js")
+<script>
+    // In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+</script>
 @endsection
