@@ -20,7 +20,7 @@ class CreateInstituicoesTable extends Migration
             $table->string("city");
             $table->string("state");
             $table->string("link")->nullable();
-            $table->string("background")->nullable();
+            $table->string("background")->default("#ffffff")->nullable();
             $table->string("name_photo")->nullable();
             $table->integer("active")->default(1);
             $table->timestamps();
