@@ -17,8 +17,7 @@ class HomeController extends Controller
     public function index()
     {
         $teste = session('user');
-        var_dump($teste);
-        exit;
+
         return view("admin.home");
     }
 

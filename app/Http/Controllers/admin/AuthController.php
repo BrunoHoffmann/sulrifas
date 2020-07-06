@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Http\Model\Sorteio;
+use App\Http\Model\Lead;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -29,7 +31,23 @@ class AuthController extends Controller
      */
     public function home()
     {
-        return view('admin.dashboard');
+        //sorteios
+        $sorteiosAberto = Sorteio::where("status", "comprar")->count();
+        $sorteiosFinalizados = Sorteio::where("status", "ver resultado")->count();
+        $sorteiosTotal = Sorteio::where("status", "!=", "em breve")->count();
+
+        //faturamento
+        //$sfm =
+
+        //leads
+        $leads = Lead::all()->count();
+
+        return view('admin.dashboard', [
+            "sorteiosAberto" => $sorteiosAberto,
+            "sorteiosFinalizados" => $sorteiosFinalizados,
+            "sorteiosTotal" => $sorteiosTotal,
+            "leads" => $leads
+        ]);
     }
 
     public function login(Request $request)
