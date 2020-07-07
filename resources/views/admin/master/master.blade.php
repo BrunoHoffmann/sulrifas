@@ -93,6 +93,10 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script src="{{ url(mix('backend/assets/js/scripts.js'))}}"></script>
 
+<script src="{{asset("ckeditor/ckeditor.js")}}"></script>
+<script>
+    CKEDITOR.replace('summary-ckeditor');
+</script>
 @hasSection('js')
     @yield('js')
 @endif

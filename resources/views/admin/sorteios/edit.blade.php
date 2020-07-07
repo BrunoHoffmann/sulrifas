@@ -56,7 +56,7 @@
 
                         <label class="label">
                             <span class="legend">*Descrição do veículo: </span>
-                            <textarea name="description" id="content" cols="30" rows="5">{{$sorteio->description}}</textarea>
+                            <textarea name="description" id="summary-ckeditor" cols="30" rows="5">{{$sorteio->description}}</textarea>
 
                             <label class="label">
                                 <span class="legend">*Km:</span>

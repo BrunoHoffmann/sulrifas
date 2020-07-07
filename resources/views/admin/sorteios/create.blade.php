@@ -58,8 +58,7 @@
 
                         <label class="label">
                             <span class="legend">*Descrição do veículo: </span>
-                            <textarea name="description" id="content" cols="30" rows="5">{{old('description')}}</textarea>
-
+                            <textarea name="description" id="summary-ckeditor" cols="30" rows="5">{{old('description')}}</textarea>
                             <label class="label">
                                 <span class="legend">*Km:</span>
                                 <input type="text" name="km" placeholder="ex: 0" value="{{old('km')}}"/>
@@ -133,3 +132,4 @@
     </div>
 </section>
 @endsection
+

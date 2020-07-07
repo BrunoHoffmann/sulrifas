@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Http\Model\Sorteio;
 use App\Http\Model\Lead;
+use App\Http\Model\Cota;
 use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
 {
@@ -37,7 +40,15 @@ class AuthController extends Controller
         $sorteiosTotal = Sorteio::where("status", "!=", "em breve")->count();
 
         //faturamento
-        //$sfm =
+        $mesAtual = date('m');
+        $sft = Cota::select("sorteios.value")
+                ->join("sorteios", "sorteios.id", "=", "cotas.id_sorteio")
+                ->where("cotas.status", "pago")
+                ->sum("sorteios.value");
+        $sfm = Cota::select("sorteios.value")
+                ->join("sorteios", "sorteios.id", "=", "cotas.id_sorteio")
+                ->where("cotas.status", "pago")->whereMonth("sorteios.data_sorteio", $mesAtual)
+                ->sum("sorteios.value");
 
         //leads
         $leads = Lead::all()->count();
@@ -46,8 +57,11 @@ class AuthController extends Controller
             "sorteiosAberto" => $sorteiosAberto,
             "sorteiosFinalizados" => $sorteiosFinalizados,
             "sorteiosTotal" => $sorteiosTotal,
+            "faturamentoMes" => $sfm,
+            "faturamentoTotal" => $sft,
             "leads" => $leads
         ]);
+
     }
 
     public function login(Request $request)

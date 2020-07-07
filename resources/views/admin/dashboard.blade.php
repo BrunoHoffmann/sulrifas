@@ -18,8 +18,8 @@
 
                 <article class="blog radius">
                     <h4 class="icon-money">Faturamento</h4>
-                    <p><b>Faturamento deste Mês:</b> 100</p>
-                    <p><b>Faturamento Total:</b> 100</p>
+                    <p><b>Faturamento deste Mês:</b> {{$faturamentoMes}}</p>
+                    <p><b>Faturamento Total:</b> {{$faturamentoTotal}}</p>
                 </article>
 
                 <article class="users radius">

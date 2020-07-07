@@ -22,6 +22,7 @@
         </a>
         <div class="dash_content_app_box_stage">
             <table id="dataTable" class="nowrap stripe" width="100" style="width: 100% !important;">
+                <h2><b>Ganhador: </b>{{$winner}}</h2>
                 <thead>
                 <tr>
                     <th>#</th>

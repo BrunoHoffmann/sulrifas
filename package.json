@@ -30,7 +30,10 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ckeditor4": "^4.14.1",
+    "ckeditor4-vue": "^1.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BrunoHoffmann/sulrifas.git"
