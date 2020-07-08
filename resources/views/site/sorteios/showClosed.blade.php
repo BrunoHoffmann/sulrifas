@@ -1,35 +1,56 @@
 @extends('site.master.master')
 
-@section('title', 'Title do veiculo - SulRifas')
-
 @section('content')
-
-<section class="show">
+{{-- slide --}}
+<section class="showItem flex">
     <div class="show-img">
-        <img src="{{url('assets/img/carro1.png')}}" alt="description">
+        {{-- slide --}}
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @foreach($imgs as $index => $img)
+                <div class="carousel-item {{($index == 0) ? 'active' : ''}}">
+                    <img src="{{ url('/../storage/app/public/imagensSorteio/' . $img) }}" alt="{{$sorteio->name}}" class="logo">
+                </div>
+                @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          {{-- fim slide --}}
     </div>
 
     <div class="show-description">
-        <h1>Fazer 250 - 2020</h1>
+        <h1>{{$sorteio->name}}</h1>
 
         <div class="description-green">
-            <div class="ganhador"><span class="ganhador-title">Ganhador</span><span class="user">Bruno Hoffmann</span><span class="cota">Cota: 829</span></div>
-
+            <div class="description-winner">
+                <h2>Ganhador</h2>
+                <span>{{$winner->name}}</span>
+                <span>Cota: {{$winner->number}}</span>
+            </div>
             <div class="description-bottom">
-                <div class="valor"><span class="valor-title">valor</span><span>R$ 25,00</span></div>
-                <div class="date"><span class="date-title">Sorteio</span><span>18/06/2020</span></div>
+                <div class="valor"><span class="valor-title">valor</span><span>{{number_format($sorteio->value, 2, ',', '.')}}</span></div>
+                <div class="date"><span class="date-title">Sorteio</span><span>{{$sorteio->data_sorteio}}</span></div>
             </div>
         </div>
         <div class="year">
-            <span>Ano: 2020</span>
-            <span>0 km</span>
+            <span>Ano: {{$sorteio->year}}</span>
+            <span>{{$sorteio->km}} km</span>
         </div>
 
-        <p>* Comprando uma centena por R$ 25,00.</p>
-        <p>Você concorre a um automóvel Fazer 250cc - 0km 2020.</p>
+        <p>{!! $sorteio->description !!}</p>
 
     </div>
 </section>
+{{-- fim sorteio --}}
+
+
 
 {{-- beneficios --}}
 <section class="grid-beneficios">
@@ -67,5 +88,11 @@
     </div>
 </div>
 </section>
+{{-- Fim beneficios --}}
 
 @endsection
+
+
+
+
+

@@ -1,7 +1,5 @@
 @extends('site.master.master')
 
-@section('title', 'Title do veiculo - SulRifas')
-
 @section('content')
 {{-- slide --}}
 <section class="showItem flex">
@@ -33,15 +31,23 @@
         <div class="description-green">
             <div class="description-bottom">
                 <div class="valor"><span class="valor-title">valor</span><span>{{number_format($sorteio->value, 2, ',', '.')}}</span></div>
-                <div class="date"><span class="date-title">{{$sorteio->status == 'em breve' ? 'Libera' : 'Sorteio'}}</span><span>{{date('d-m-Y', strtotime($data))}}</span></div>
+                <div class="date"><span class="date-title">Sorteio</span><span>{{date('d/m/Y', strtotime($sorteio->data_sorteio))}}</span></div>
             </div>
         </div>
+        @if($sorteio->status == 'em breve')
+        <div class="description-libera">
+            <h2>Data que libera</h2>
+            <div class="time-libera">
+                <span>{{date('d/m/Y', strtotime($sorteio->data_liberar))}}</span>
+            </div>
+        </div>
+        @endif
         <div class="year">
             <span>Ano: {{$sorteio->year}}</span>
             <span>{{$sorteio->km}} km</span>
         </div>
 
-        <p>{{$sorteio->description}}</p>
+        <p>{!! $sorteio->description !!}</p>
 
     </div>
 </section>
@@ -137,11 +143,11 @@
             @foreach($banks as $bank)
                 <div class="bank">
                     <h3>{{$bank->name}}</h3>
-                    <p>Títular: Bruno Hoffmann</p>
-                    <p>CPF: 012.131.959-85</p>
-                    <p>Agência: 0001</p>
-                    <p>Conta: 115152521</p>
-                    <p>Tipo: Conta Corrente</p>
+                    @if($bank->holder_active == 1)<p>Títular: {{$bank->holder}}</p>@endif
+                    @if($bank->cpf_active == 1)<p>CPF: {{$bank->cpf}}</p>@endif
+                    @if($bank->agency_active == 1)<p>Agência: {{$bank->agency}}</p>@endif
+                    @if($bank->account_active == 1)<p>Conta: {{$bank->account}}</p>@endif
+                    @if($bank->type_active == 1)<p>Tipo: {{$bank->type_name}}</p>@endif
                 </div>
             @endforeach
         @else
@@ -192,10 +198,8 @@
       </div>
     </div>
   </div>
-
 @endsection
 @section('js')
-
 <script>
     const btn = document.querySelectorAll('.livre');
     btn.forEach(function(item) {
@@ -205,6 +209,7 @@
     });
 
     $('#banco').modal('show');
+
 </script>
 @endsection
 

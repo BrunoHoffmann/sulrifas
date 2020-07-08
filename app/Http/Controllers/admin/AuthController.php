@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+    }
     /**
      * Display a listing of the resource.
      *

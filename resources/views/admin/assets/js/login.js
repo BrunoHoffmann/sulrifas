@@ -15,7 +15,6 @@ $(function() {
         const password = form.find('input[name="password_check"]').val();
 
         $.post(action, {email: email, password: password}, function(response) {
-            console.log(response);
 
             if(response.message) {
                 ajaxMessage(response.message, 3);

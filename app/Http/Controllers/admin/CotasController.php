@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class CotasController extends Controller
 {
+    public function __construct()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+    }
    /**
      *
      * @param $id_sorteio
@@ -29,16 +33,10 @@ class CotasController extends Controller
                     ->Join('lead as l', 'l.id', '=', 'cotas.id_lead')
                     ->select("cotas.*", "l.name")->get();
 
-        /*$sorteios = DB::table('sorteios')
-        ->leftJoin("cotas", "cotas.id", "=", "sorteios.winner")
-        ->leftJoin("lead", "lead.id", "=", "cotas.id_lead")
-        ->select('sorteios.*', 'lead.name as ganhador')
-        ->get();*/
-
         return view('admin.sorteios.cotas.index', [
             'id_sorteio' => $id_sorteio,
             'cotas' => $cota,
-            "winner" => $winner[0]->name
+            "winner" => ($winner[0]->name ?? null)
         ]);
     }
 

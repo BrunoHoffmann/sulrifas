@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
+    <!-- SEO -->
+    <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title')</title>
-    <meta name="description" content="@yield('description')">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {!!$head ?? ''!!}
+
 
     {{-- Bootstrap --}}
     <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
@@ -17,6 +18,8 @@
 
     {{-- Favicon --}}
     <link rel="shortcut icon" href="{{asset('assets/img/favicon.png')}}">
+
+    @yield("css")
 </head>
 <body>
     {{-- header start --}}

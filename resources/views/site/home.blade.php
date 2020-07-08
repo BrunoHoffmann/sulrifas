@@ -1,23 +1,41 @@
 @extends('site.master.master')
 
-@section('title', 'Sulrifas - Sorteios de carros e motos')
-
 @section('content')
 @if(isset($ultimo))
+
 <main class="principal">
     <div class="back-principal"></div>
-    <figure>
-        <div class="img">
-            <img src="{{ url('/../storage/app/public/capas/' . $ultimo->capa) }}" alt="{{$ultimo->name}}" class="logo">
+<!-- Carrosel start-->
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+        @foreach($ultimo as $index => $item)
+        <div class="carousel-item {{($index == 0) ? 'active' : ''}}">
+            <figure>
+                <div class="img">
+                    <img src="{{ url('/../storage/app/public/capas/' . $item->capa) }}" alt="{{$item->name}}" class="logo">
+                </div>
+                <figcaption>
+                    <div class="principal-legenda">
+                        <h1>{{$item->name}}</h1>
+                        <span>{{$item->year}}</span>
+                        <a href="{{Route('sorteios.show', $item->slug)}}" class="btn-compra">Comprar rifa</a>
+                    </div>
+                </figcaption>
+            </figure>
         </div>
-        <figcaption>
-            <div class="principal-legenda">
-                <h1>{{$ultimo->name}}</h1>
-                <span>{{$ultimo->year}}</span>
-                <a href="{{Route('sorteios.show', $ultimo->slug)}}" class="btn-compra">Comprar rifa</a>
-            </div>
-        </figcaption>
-    </figure>
+        @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+        </a>
+    </div>
+<!-- Carrosel end-->
+
 </main>
 @else
 <br><br><br><br>

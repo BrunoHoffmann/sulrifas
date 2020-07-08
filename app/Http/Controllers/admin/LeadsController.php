@@ -9,6 +9,11 @@ use App\Http\Model\Lead;
 
 class LeadsController extends Controller
 {
+    public function __construct()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+    }
+
     public function index()
     {
         $leads = Lead::all();

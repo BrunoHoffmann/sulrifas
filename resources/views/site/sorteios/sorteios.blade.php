@@ -1,7 +1,5 @@
 @extends('site.master.master')
 
-@section('title', 'Todos os sorteios')
-
 @section('content')
 
 <section class="sorteios">

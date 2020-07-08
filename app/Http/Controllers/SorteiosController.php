@@ -10,11 +10,29 @@ use App\Http\Model\Sorteio;
 use App\Http\Model\Cota;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use App\Helpers\Seo;
 
 class SorteiosController extends Controller
 {
+    private $seo;
+
+    public function __construct()
+    {
+        $this->seo = new Seo();
+        date_default_timezone_set('America/Sao_Paulo');
+    }
+
+
+
     public function index($tag = null)
     {
+        $head = $this->seo->render(
+            "Sorteios | SulRifas",
+            "Todos os sorteios do SulRifas",
+            "sulrifas.com.br",
+            "https://via.placeholder.com/1200x628.png?text=Sorteios+SulRifas"
+        );
+
         if ($tag) {
             if ($tag == 'encerrado') {
                 $tag = 'ver resultado';
@@ -29,7 +47,8 @@ class SorteiosController extends Controller
             ->get();
             return view("site.sorteios.sorteios", [
                 'slug' => $slug,
-                'sorteios' => $sorteios
+                'sorteios' => $sorteios,
+                "head" => $head
             ]);
         }else {
             $slug = 'teste-slug';
@@ -39,7 +58,8 @@ class SorteiosController extends Controller
             ->get();
             return view("site.sorteios.sorteios", [
                 'slug' => $slug,
-                'sorteios' => $sorteios
+                'sorteios' => $sorteios,
+                "head" => $head
             ]);
         }
 
@@ -65,6 +85,7 @@ class SorteiosController extends Controller
             $count++;
         }
 
+        //FILTER para todos
         if(!$filter or $filter == 'todos') {
             $cotas = DB::table('cotas')
             ->leftjoin('lead', 'cotas.id_lead', '=', 'lead.id')
@@ -80,22 +101,44 @@ class SorteiosController extends Controller
             ->get();
         }
 
+        //Filter das cotas
         $livre = Cota::where('id_sorteio', $sorteio[0]->id)->where('status', 'livre')->count();
         $reservado = Cota::where('id_sorteio', $sorteio[0]->id)->where('status', 'reservado')->count();
         $pago = Cota::where('id_sorteio', $sorteio[0]->id)->where('status', 'pago')->count();
 
-        if($sorteio[0]->status == 'em breve') {
-            $data = $sorteio[0]->data_liberar;
-        }else {
-            $data = $sorteio[0]->data_sorteio;
-        }
-
-        if(date('Y-m-d') <= $sorteio[0]->data_sorteio) {
+        //colocar para poder comprar se for liberado
+        date_default_timezone_set('America/Sao_Paulo');
+        if($sorteio[0]->data_liberar <= date('Y-m-d')) {
             Sorteio::find($sorteio[0]->id)->update([
                 'status' => 'comprar'
             ]);
         }
 
+        //SEO
+        $head = $this->seo->render(
+            "Sorteio do " . $sorteio[0]->name . " | SulRifas",
+            "Sorteio de um " . $sorteio[0]->name,
+            "sulrifas.com.br",
+            "https://via.placeholder.com/1200x628.png?text=Sorteios+SulRifas"
+        );
+
+
+        //verifica se passou 12 horas
+        foreach($cotas as $item) {
+            if($item->status == "reservado") {
+                $hora = 12*60*60;
+                $dataM = strtotime($item->time_compra) + $hora;
+                $dataM = date("Y-m-d H:i:s", $dataM);
+
+                if(date("Y-m-d H:i:s") >= $dataM) {
+                    $cota = Cota::where("id", $item->id)->update([
+                        "status" => "livre",
+                        "id_lead" => null,
+                        "time_compra" => null
+                    ]);
+                }
+            }
+        }
 
         if($sorteio[0]->status !== 'ver resultado') {
             return view('site.sorteios.showOpen', [
@@ -108,15 +151,21 @@ class SorteiosController extends Controller
                 'pago' => $pago,
                 'activeBank' => $activeBank,
                 'imgs' => $imgs,
-                'data' => $data
+                "head" => $head
             ]);
         }else {
+            $winner = Sorteio::where("sorteios.id", $sorteio[0]->id)
+                        ->Join("cotas", "cotas.id", "sorteios.winner")
+                        ->join("lead", "lead.id", "cotas.id_lead")
+                        ->select("lead.name", "cotas.number")->get();
+
             return view('site.sorteios.showClosed', [
                 'slug' => $slug,
                 'banks' => $banks,
                 'sorteio' => $sorteio[0],
-                'cotas' => $cotas,
-                'imgs' => $imgs
+                'imgs' => $imgs,
+                "winner" => $winner[0],
+                "head" => $head
             ]);
         }
     }
@@ -131,16 +180,15 @@ class SorteiosController extends Controller
                 $lead = Lead::create($request->all());
             }
 
-            $dataAtual = date("Y-m-d h:i:s");
+            $dataAtual = date("Y-m-d H:i:s");
             $sorteio = Sorteio::where('slug', $slug)->first();
-            $cotas = Cota::find($request->cota)->update([
+            $cotas = Cota::where("id",$request->cota)->update([
                 'id_lead' => $lead->id,
                 'status' => 'reservado',
                 'time_compra' => $dataAtual
             ]);
 
             $activeBank = true;
-
             return $this->show($slug, $activeBank);
         }
 

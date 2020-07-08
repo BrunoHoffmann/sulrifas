@@ -18,6 +18,7 @@ class Cota extends Model
         'number',
         'status',
         'id_lead',
-        'time_compra'
+        'created_at',
+        'updated_at'
     ];
 }

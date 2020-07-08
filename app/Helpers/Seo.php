@@ -37,8 +37,6 @@ class Seo
             $follow
         );
 
-        var_dump($seo->debug());
-
         return $seo->render();
     }
 }

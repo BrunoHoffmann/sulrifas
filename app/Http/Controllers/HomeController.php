@@ -20,8 +20,8 @@ class HomeController extends Controller
     public function index()
     {
         $head = $this->seo->render(
-            "SulRifas",
-            "Site de sorteio de carros e motos",
+            "Home | SulRifas",
+            "Home do site de sorteio de carros e motos SulRifas",
             "sulrifas.com.br",
             "https://via.placeholder.com/1200x628.png?text=Home+SulRifas"
         );
@@ -36,11 +36,12 @@ class HomeController extends Controller
                     ->select('sorteios.*', 'sorteios_capas.name as capa')
                     ->where('sorteios.status', 'comprar')
                     ->orderBy('sorteios.id', 'desc')
-                    ->first();
+                    ->limit(3)->get();
 
         return view("site.home", [
             'sorteios' => $sorteios,
-            'ultimo' => $ultimo
+            'ultimo' => $ultimo,
+            "head" => $head
         ]);
     }
 

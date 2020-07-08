@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Storage;
 
 class SorteiosController extends Controller
 {
+    public function __construct()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -219,6 +223,7 @@ class SorteiosController extends Controller
             'data_liberar' => $data_liberar,
             'value' => $request->value,
             'km' => $request->km,
+            "status" => $request->status,
             'winner' => $request->winner,
             'active' => $request->active
         ]);

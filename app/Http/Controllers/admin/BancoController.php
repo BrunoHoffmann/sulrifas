@@ -10,6 +10,10 @@ use App\Http\Requests\BankRequest;
 
 class BancoController extends Controller
 {
+    public function __construct()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+    }
     /**
      * Display a listing of the resource.
      *
